@@ -1,0 +1,10 @@
+[{"id":1,"cityName":"Hongwei","countryName":"China","countryCode":"CN","latitude":41.217649,"longitude":123.1966721,"timeZone":"Asia/Harbin"},
+{"id":2,"cityName":"Las Americas","countryName":"Mexico","countryCode":"MX","latitude":21.1078535,"longitude":-101.694732,"timeZone":"America/Mexico_City"},
+{"id":3,"cityName":"Ljungby","countryName":"Sweden","countryCode":"SE","latitude":56.7870687,"longitude":13.8913772,"timeZone":"Europe/Stockholm"},
+{"id":4,"cityName":"Kobuleti","countryName":"Georgia","countryCode":"GE","latitude":41.815997,"longitude":41.7838101,"timeZone":"Asia/Tbilisi"},
+{"id":5,"cityName":"San Nicolas","countryName":"Philippines","countryCode":"PH","latitude":13.9300945,"longitude":120.9522977,"timeZone":"Asia/Manila"},
+{"id":6,"cityName":"Weitian","countryName":"China","countryCode":"CN","latitude":27.70841,"longitude":118.79264,"timeZone":"Asia/Shanghai"},
+{"id":7,"cityName":"Severnyy","countryName":"Russia","countryCode":"RU","latitude":52.6545685,"longitude":41.4475479,"timeZone":"Europe/Moscow"},
+{"id":8,"cityName":"Jinan","countryName":"China","countryCode":"CN","latitude":36.6512,"longitude":117.120095,"timeZone":"Asia/Chongqing"},
+{"id":9,"cityName":"Fuquan","countryName":"China","countryCode":"CN","latitude":26.686335,"longitude":107.520386,"timeZone":"Asia/Shanghai"},
+{"id":10,"cityName":"Ganjaran","countryName":"Indonesia","countryCode":"ID","latitude":-8.1433,"longitude":112.6168852,"timeZone":"Asia/Jakarta"}]

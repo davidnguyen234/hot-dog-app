@@ -1,0 +1,71 @@
+[{
+    "id": 1,
+    "make": "Volvo",
+    "model": "V40",
+    "modelYear": 2004,
+    "driver": "Clem Costelloe",
+    "lastOilChange": "2/21/2019"
+  }, {
+    "id": 2,
+    "make": "Dodge",
+    "model": "Viper",
+    "modelYear": 1998,
+    "driver": "Bogey Thumann",
+    "lastOilChange": "10/10/2019"
+  }, {
+    "id": 3,
+    "make": "Mitsubishi",
+    "model": "L300",
+    "modelYear": 1990,
+    "driver": "Jaye Seatter",
+    "lastOilChange": "5/19/2019"
+  }, {
+    "id": 4,
+    "make": "GMC",
+    "model": "Savana 1500",
+    "modelYear": 2011,
+    "driver": "Harper Hardware",
+    "lastOilChange": "9/19/2019"
+  }, {
+    "id": 5,
+    "make": "Nissan",
+    "model": "Xterra",
+    "modelYear": 2010,
+    "driver": "Bernadene Pratley",
+    "lastOilChange": "2/2/2019"
+  }, {
+    "id": 6,
+    "make": "Ford",
+    "model": "Mustang",
+    "modelYear": 2005,
+    "driver": "Tatiana Dyott",
+    "lastOilChange": "7/22/2019"
+  }, {
+    "id": 7,
+    "make": "Lamborghini",
+    "model": "Diablo",
+    "modelYear": 1991,
+    "driver": "Ketty Whitnall",
+    "lastOilChange": "5/30/2019"
+  }, {
+    "id": 8,
+    "make": "Chrysler",
+    "model": "300M",
+    "modelYear": 2002,
+    "driver": "Cherie Vell",
+    "lastOilChange": "6/19/2019"
+  }, {
+    "id": 9,
+    "make": "Chevrolet",
+    "model": "G-Series G10",
+    "modelYear": 1995,
+    "driver": "Lucais Bowman",
+    "lastOilChange": "7/9/2019"
+  }, {
+    "id": 10,
+    "make": "Mercedes-Benz",
+    "model": "E-Class",
+    "modelYear": 1999,
+    "driver": "Vonni Gorwood",
+    "lastOilChange": "10/30/2019"
+  }]

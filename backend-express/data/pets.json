@@ -1,0 +1,71 @@
+[{
+    "id": 1,
+    "petType": "Cobra (unidentified)",
+    "owner": "Joeann Sparkwill",
+    "scientificName": "Naja sp.",
+    "country": "Philippines",
+    "petBirthday": "5/26/2019"
+  }, {
+    "id": 2,
+    "petType": "Hartebeest, red",
+    "owner": "Matthieu MacShirie",
+    "scientificName": "Alcelaphus buselaphus caama",
+    "country": "Brazil",
+    "petBirthday": "1/8/2020"
+  }, {
+    "id": 3,
+    "petType": "Sable antelope",
+    "owner": "Truman Merida",
+    "scientificName": "Hippotragus niger",
+    "country": "Brazil",
+    "petBirthday": "9/20/2019"
+  }, {
+    "id": 4,
+    "petType": "Square-lipped rhinoceros",
+    "owner": "Alie Meldon",
+    "scientificName": "Ceratotherium simum",
+    "country": "Russia",
+    "petBirthday": "2/17/2019"
+  }, {
+    "id": 5,
+    "petType": "Vervet monkey",
+    "owner": "Sherrie Cheson",
+    "scientificName": "Cercopithecus aethiops",
+    "country": "China",
+    "petBirthday": "7/24/2019"
+  }, {
+    "id": 6,
+    "petType": "Green vine snake",
+    "owner": "Alfie Junifer",
+    "scientificName": "Oxybelis fulgidus",
+    "country": "China",
+    "petBirthday": "12/30/2019"
+  }, {
+    "id": 7,
+    "petType": "White-faced tree rat",
+    "owner": "Quill Guisby",
+    "scientificName": "Echimys chrysurus",
+    "country": "Malaysia",
+    "petBirthday": "12/10/2019"
+  }, {
+    "id": 8,
+    "petType": "Macaque, rhesus",
+    "owner": "Clem Aikin",
+    "scientificName": "Macaca mulatta",
+    "country": "Ukraine",
+    "petBirthday": "7/1/2019"
+  }, {
+    "id": 9,
+    "petType": "Dusky rattlesnake",
+    "owner": "Rochelle Dannohl",
+    "scientificName": "Crotalus triseriatus",
+    "country": "Brazil",
+    "petBirthday": "2/15/2019"
+  }, {
+    "id": 10,
+    "petType": "Red-billed buffalo weaver",
+    "owner": "Payton Odger",
+    "scientificName": "Bubalornis niger",
+    "country": "China",
+    "petBirthday": "5/6/2019"
+  }]
