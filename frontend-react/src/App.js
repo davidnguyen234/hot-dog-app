@@ -5,8 +5,8 @@ import './App.css';
 class App extends Component {
 
   constructor(props) {
-    super(props);
-    this.state = { apiResponse: '' };
+    super(props)
+    this.state = { apiResponse: 'THIS FRONTEND CRAP WORKS' }
   }
 
   callAPI() {
@@ -24,7 +24,7 @@ class App extends Component {
       <div className="App" >
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p className="App-intro">;{this.state.apiResponse}</p>
+          <p className="App-intro">{this.state.apiResponse}</p>
           <a
             className="App-link"
             href="https://reactjs.org"

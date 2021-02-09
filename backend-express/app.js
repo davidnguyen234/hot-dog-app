@@ -5,16 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const colorsRouter = require('./routes/colors');
-const carsRouter = require('./routes/cars');
-const appsRouter = require('./routes/apps');
-const usersRouter = require('./routes/users');
-const petsRouter = require('./routes/pets');
-const citiesRouter = require('./routes/cities');
-
 
 var cors = require('cors');
 
+//ROUTE FOR TESTING 
 var testAPIRouter = require('./routes/testAPI');
 
 var app = express();
@@ -33,19 +27,11 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//OUR TEST ROUTE FOR TESTING DB 
 app.use('/testAPI', testAPIRouter);
 
-//our routes
-
+//OUR INDEX/HOME/LANDING/START ROUTE
 app.use('/', indexRouter);
-app.use('/colors', colorsRouter);
-app.use('/cars', carsRouter);
-app.use('/apps', appsRouter);
-app.use('/users', usersRouter);
-app.use('/pets', petsRouter);
-app.use('/cities', citiesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -70,8 +56,8 @@ app.use(function (err, req, res, next) {
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  database: 'DATABASE_NAME_HERE',
-  password: 'YOUR_PASSWORD_HERE'
+  database: 'api_test',
+  password: 'Snowba1!T055'
 });
 
 // simple query
