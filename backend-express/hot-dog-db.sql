@@ -5,7 +5,7 @@ USE `hot-dog-db`;
 -- -----------------------------------------------------
 -- Table Employee
 -- -----------------------------------------------------
-CREATE TABLE Employee (
+CREATE TABLE `Employee` (
   employee_id INT NOT NULL,
   employee_first_name VARCHAR(45) NOT NULL,
   employee_last_name VARCHAR(45) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE Employee (
 -- -----------------------------------------------------
 -- Table Address
 -- -----------------------------------------------------
-CREATE TABLE Address (
+CREATE TABLE `Address` (
   address_id INT NOT NULL,
   address_street VARCHAR(45) NOT NULL,
   address_suite INT NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE Address (
 -- -----------------------------------------------------
 -- Table Vendor
 -- -----------------------------------------------------
-CREATE TABLE Vendor (
+CREATE TABLE `Vendor` (
   vendor_id INT NOT NULL,
   employee_id INT NOT NULL,
   address_id INT NOT NULL,
@@ -48,8 +48,8 @@ CREATE TABLE Vendor (
 -- -----------------------------------------------------
 -- Table Admin
 -- -----------------------------------------------------
-CREATE TABLE Admin (
-  admin_id INTNOT NULL,
+CREATE TABLE `Admin` (
+  admin_id INT NOT NULL,
   employee_id INT NOT NULL,
   PRIMARY KEY (admin_id),
   INDEX fk_Admin_Employee_idx (employee_id ASC) VISIBLE,
@@ -61,7 +61,7 @@ CREATE TABLE Admin (
 -- -----------------------------------------------------
 -- Table Inventory
 -- -----------------------------------------------------
-CREATE TABLE Inventory (
+CREATE TABLE `Inventory` (
   inventory_id INT NOT NULL,
   inventory_type VARCHAR(45) NOT NULL,
   inventory_price INT NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE Inventory (
 -- -----------------------------------------------------
 -- Table Customer
 -- -----------------------------------------------------
-CREATE TABLE Customer (
+CREATE TABLE `Customer` (
   cust_id INT NOT NULL,
   address_id INT NOT NULL,
   cust_first_name VARCHAR(45) NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE `Order` (
 -- -----------------------------------------------------
 -- Table Payment
 -- -----------------------------------------------------
-CREATE TABLE Payment (
+CREATE TABLE `Payment` (
   payment_id INT NOT NULL,
   cust_id INT NOT NULL,
   payment_price INT NOT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE Payment (
 -- -----------------------------------------------------
 -- Table Vendor_has_Inventory
 -- -----------------------------------------------------
-CREATE TABLE Vendor_has_Inventory (
+CREATE TABLE `Vendor_has_Inventory` (
   vendor_id INT NOT NULL,
   inventory_id INT NOT NULL,
   inventory_avail TINYINT NOT NULL,
