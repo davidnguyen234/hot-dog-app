@@ -10,12 +10,12 @@ var cors = require('cors');
 
 //ROUTE FOR TESTING 
 var testAPIRouter = require('./routes/testAPI');
-
+var vendorsRouter = require('./routes/vendors');
 var app = express();
 
 
 const mysql = require('mysql2');
-
+let appCred = require('../../appCred.json');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //OUR TEST ROUTE FOR TESTING DB 
 app.use('/testAPI', testAPIRouter);
-
+app.use('/vendors', vendorsRouter);
 //OUR INDEX/HOME/LANDING/START ROUTE
 app.use('/', indexRouter);
 
@@ -53,24 +53,19 @@ app.use(function (err, req, res, next) {
 // get the client
 
 // create the connection to database
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  database: 'api_test',
-  password: 'Snowba1!T055'
-});
+ const connection = mysql.createConnection(appCred);
 
 // simple query
-connection.query(
-  'SELECT * FROM `animals`',
-  function (err, results) {
-    if (err) {
-      console.log(err);
-    }
-    console.log(results); // results contains rows returned by server
+// connection.query(
+//   // 'SELECT * FROM `animals`',
+//   function (err, results) {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log(results); // results contains rows returned by server
 
-  }
-);
+//   }
+// );
 
 
 module.exports = app;
