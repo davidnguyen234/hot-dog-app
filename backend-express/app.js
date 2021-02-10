@@ -3,17 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-const indexRouter = require('./routes/index');
+var app = express();
 
 var cors = require('cors');
 
-//ROUTE FOR TESTING 
-var testAPIRouter = require('./routes/testAPI');
-
-var app = express();
-
-
+const indexRouter = require('./routes/index');
 const mysql = require('mysql2');
 
 // view engine setup
@@ -26,9 +20,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-//OUR TEST ROUTE FOR TESTING DB 
-app.use('/testAPI', testAPIRouter);
 
 //OUR INDEX/HOME/LANDING/START ROUTE
 app.use('/', indexRouter);
@@ -49,20 +40,16 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-//connect to DB
-// get the client
+// CONNECT TO DB
+// variable that holds db credentials
+let myCredentials = require( '../../dbCreds.json');
 
 // create the connection to database
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  database: 'api_test',
-  password: 'Snowba1!T055'
-});
+const connection = mysql.createConnection(myCredentials);
 
 // simple query
 connection.query(
-  'SELECT * FROM `animals`',
+  'SELECT * FROM `Customer`',
   function (err, results) {
     if (err) {
       console.log(err);
@@ -71,6 +58,5 @@ connection.query(
 
   }
 );
-
 
 module.exports = app;
