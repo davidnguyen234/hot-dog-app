@@ -42,7 +42,7 @@ app.use(function (err, req, res, next) {
 
 // CONNECT TO DB
 // variable that holds db credentials
-let myCredentials = require( '../../dbCreds.json');
+let myCredentials = require('../../dbCreds.json');
 
 // create the connection to database
 const connection = mysql.createConnection(myCredentials);
