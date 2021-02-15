@@ -8,11 +8,9 @@ var app = express();
 var cors = require('cors');
 
 const indexRouter = require('./routes/index');
+const vendorRouter= require('./routes/vendor');
 const mysql = require('mysql2');
-// route /////////////////////
-var vendorsRouter = require('./routes/vendors');
-app.use('/vendors', vendorsRouter);
-//////////////////////////////
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -26,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //OUR INDEX/HOME/LANDING/START ROUTE
 app.use('/', indexRouter);
-
+app.use('/vendor', vendorRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -45,21 +43,21 @@ app.use(function (err, req, res, next) {
 
 // CONNECT TO DB
 // variable that holds db credentials
-let myCredentials = require( '../../dbCreds.json');
+let myCredentials = require('../../dbCreds.json');
 
 // create the connection to database
 const connection = mysql.createConnection(myCredentials);
 
 // simple query
-connection.query(
-  'SELECT * FROM `Customer`',
-  function (err, results) {
-    if (err) {
-      console.log(err);
-    }
-    console.log(results); // results contains rows returned by server
+// connection.query(
+//   'SELECT * FROM `vendor`',
+//   function (err, results) {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log(results); // results contains rows returned by server
 
-  }
-);
+//   }
+// );
 
 module.exports = app;
