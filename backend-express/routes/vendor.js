@@ -21,5 +21,22 @@ if (req.params.id){
      })
   //connection.end();
 });
-
+// Returns /value"
+router.get('/:id',(req, res, next) => {
+   let mySQLQuery=  `SELECT * FROM vendor WHERE vendor_id = '${req.params.id}'`;
+if (req.params.id){
+   mySQLQuery= `SELECT * FROM vendor WHERE vendor_id = '${req.params.id}'`;
+}else{
+   mySQLQuery= `SELECT * FROM vendor`;
+}
+  //connection.connect();
+  connection.query(mySQLQuery, (error, results) => {
+     if(error) {
+        res.sendStatus(500);
+     }else {
+        res.send(results);
+     }
+     })
+  //connection.end();
+});
 module.exports = router;
