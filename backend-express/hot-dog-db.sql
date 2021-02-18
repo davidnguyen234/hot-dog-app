@@ -183,14 +183,14 @@ INSERT `Vendor`
   (103, 4, 6);
 
 INSERT `Customer`
-	VALUES
+  VALUES
   (1, 2, 'Fidelity' , 'Bennis'),
   (2, 5, 'Magda'    , 'Margrie'),
   (3, 4, 'Alfons'   , 'Frearson'),
   (4, 3, 'Florri'   , 'Ormerod');
 
 INSERT `Order`
-	VALUES
+  VALUES
   (001, 101, 1, 14.98, '2021-02-20 09:58:17'),
   (002, 103, 4, 7.99, '2021-02-20 10:26:09'),
   (003, 103, 1, 4.98, '2021-02-21 07:01:04'),
