@@ -155,7 +155,7 @@ CREATE TABLE `Vendor_has_Inventory` (
 ##############################################################
 
 
-INSERT `Address`
+INSERT INTO `Address`
   VAlUES
   (1, 44, 'Forest Dale', 98101, 'Seattle', 'Washington'),
   (2, 100, 'Pleasure', 98114, 'Seattle', 'Washington'),
@@ -165,31 +165,31 @@ INSERT `Address`
   (6, 562, 'Rockefeller', 98122, 'Seattle', 'Washington');
 
 
-INSERT `Employee`
+INSERT INTO `Employee`
   VALUES
   (1, 'Caprice'  , 'Gregoratti', '3123817003'),
   (2, 'Ezra'     , 'Dorbin'    , '2627518167'),
   (3, 'Meade'    , 'Marder'    , '2966668589'),
   (4, 'Teresa'   , 'Shade'     , '5319315327');
 
-INSERT `Admin`
+INSERT INTO `Admin`
   VAlUES
   (100, 2); ## Ezra Dorbin
 
-INSERT `Vendor`
+INSERT INTO `Vendor`
   VALUES
   (101, 1, 2), ## Caprice Gregoratti at address #2
   (102, 3, 1),
   (103, 4, 6);
 
-INSERT `Customer`
+INSERT INTO `Customer`
   VALUES
   (1, 2, 'Fidelity' , 'Bennis'),
   (2, 5, 'Magda'    , 'Margrie'),
   (3, 4, 'Alfons'   , 'Frearson'),
   (4, 3, 'Florri'   , 'Ormerod');
 
-INSERT `Order`
+INSERT INTO `Order`
   VALUES
   (001, 101, 1, 14.98, '2021-02-20 09:58:17'),
   (002, 103, 4, 7.99, '2021-02-20 10:26:09'),
@@ -198,7 +198,7 @@ INSERT `Order`
   (005, 102, 4, 25.96, '2021-02-22 12:40:57'),
   (006, 101, 3, 3.97, '2021-02-24 13:34:31');
 
-INSERT `Payment`
+INSERT INTO `Payment`
   VALUES
   (001, 1, 14.98, '2021-02-20 09:58:17'),
   (002, 4, 7.99, '2021-02-20 10:26:09'),
@@ -207,14 +207,14 @@ INSERT `Payment`
   (005, 4, 25.96, '2021-02-22 12:40:57'),
   (006, 3, 3.97, '2021-02-24 13:34:31');
 
-INSERT `Inventory`
+INSERT INTO `Inventory`
   VALUES
   (1, 'Hotdog', 3.00, 0.50),
   (2, 'Chips', 1.98, 0.25),
   (3, 'Soda', .99, 0.25),
   (4, 'Cookie', 1.79, 0.75);
 
-INSERT `Vendor_has_Inventory`
+INSERT INTO `Vendor_has_Inventory`
   VALUES
   (101, 1, 1), ## 0 == false (does not have). 1 == true (does have)
   (101, 2, 1),
@@ -228,9 +228,6 @@ INSERT `Vendor_has_Inventory`
   (103, 2, 1),
   (103, 3, 1),
   (103, 4, 1);
-    
-    
-
 
 ###########################################
 # ▒█▀▀▀█ ░█▀▀█ ▒█▀▄▀█ ▒█▀▀█ ▒█░░░ ▒█▀▀▀   #
