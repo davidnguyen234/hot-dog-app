@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+//MENU IMPORTS
+import Menu from './components/Menu';
+import Button from './components/Button';
 
 class App extends Component {
 
@@ -15,25 +18,16 @@ class App extends Component {
       .then(res => this.setState({ apiResponse: res }));
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.callAPI();
   }
 
   render() {
     return (
       <div className="App" >
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p className="App-intro">{this.state.apiResponse}</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-        </a>
-        </header>
+        <Menu>
+          <Button />
+        </Menu>
       </div>
     );
   }
