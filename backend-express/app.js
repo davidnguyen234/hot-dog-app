@@ -49,11 +49,12 @@ const connection = mysql.createConnection(myCredentials);
 
 // simple query
 connection.query(
-  'SELECT * FROM `Customer`',
+  'SELECT * FROM `address`',
   function (err, results) {
     if (err) {
       console.log(err);
     }
+
     console.log(results); // results contains rows returned by server
 
   }
