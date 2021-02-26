@@ -43,24 +43,4 @@ app.use(function (err, req, res, next) {
 });
 
 
-// // CONNECT TO DB
-// // variable that holds db credentials
-// let myCredentials = require('../../dbCreds.json');
-
-// // create the connection to database
-// const connection = mysql.createConnection(myCredentials);
-
-
-// // get all address
-// connection.query(
-//   'SELECT * FROM `Address`',
-//   function (err, results) {
-//     if (err) {
-//       console.log(err);
-//     }
-//     console.log(results); // results contains rows returned by server
-
-//   }
-// );
-
 module.exports = app;
