@@ -8,7 +8,8 @@ var app = express();
 var cors = require('cors');
 
 const indexRouter = require('./routes/index');
-const mysql = require('mysql2');
+
+const cartsRouter = require('./routes/carts')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //OUR INDEX/HOME/LANDING/START ROUTE
 app.use('/', indexRouter);
+app.use('/carts', cartsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -40,23 +42,25 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-// CONNECT TO DB
-// variable that holds db credentials
-let myCredentials = require('../../dbCreds.json');
 
-// create the connection to database
-const connection = mysql.createConnection(myCredentials);
+// // CONNECT TO DB
+// // variable that holds db credentials
+// let myCredentials = require('../../dbCreds.json');
 
-// simple query
-connection.query(
-  'SELECT * FROM `Customer`',
-  function (err, results) {
-    if (err) {
-      console.log(err);
-    }
-    console.log(results); // results contains rows returned by server
+// // create the connection to database
+// const connection = mysql.createConnection(myCredentials);
 
-  }
-);
+
+// // get all address
+// connection.query(
+//   'SELECT * FROM `Address`',
+//   function (err, results) {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log(results); // results contains rows returned by server
+
+//   }
+// );
 
 module.exports = app;
