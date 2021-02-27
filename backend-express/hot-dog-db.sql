@@ -101,6 +101,7 @@ CREATE TABLE `Order` (
   cust_id INT NOT NULL,
   order_price VARCHAR(45) NOT NULL,
   order_date_time DATETIME NOT NULL,
+  order_status TINYINT NOT NULL,
   PRIMARY KEY (order_id),
   INDEX fk_Order_Vendor_idx (vendor_id ASC) VISIBLE,
   INDEX fk_Order_Customer_idx (cust_id ASC) VISIBLE,
@@ -191,12 +192,12 @@ INSERT INTO `Customer`
 
 INSERT INTO `Order`
   VALUES
-  (001, 101, 1, 14.98, '2021-02-20 09:58:17'),
-  (002, 103, 4, 7.99, '2021-02-20 10:26:09'),
-  (003, 103, 1, 4.98, '2021-02-21 07:01:04'),
-  (004, 101, 2, 14.97, '2021-02-21 01:50:38'),
-  (005, 102, 4, 25.96, '2021-02-22 12:40:57'),
-  (006, 101, 3, 3.97, '2021-02-24 13:34:31');
+  (001, 101, 1, 14.98, '2021-02-20 09:58:17', 0), ## 0 == NOT complete 1 == complete
+  (002, 103, 4, 7.99, '2021-02-20 10:26:09', 0),
+  (003, 103, 1, 4.98, '2021-02-21 07:01:04', 0),
+  (004, 101, 2, 14.97, '2021-02-21 01:50:38', 0),
+  (005, 102, 4, 25.96, '2021-02-22 12:40:57', 0),
+  (006, 101, 3, 3.97, '2021-02-24 13:34:31', 0),
 
 INSERT INTO `Payment`
   VALUES
