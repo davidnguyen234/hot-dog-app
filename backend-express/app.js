@@ -3,26 +3,24 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var app = express();
-
 var cors = require('cors');
 
-const indexRouter = require('./routes/index');
-const mysql = require('mysql2');
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
+// Starting server
+var app = express();
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//OUR INDEX/HOME/LANDING/START ROUTE
+// INITALIZING THE ROUTES
+let indexRouter = require('./routes/index');
+let itemsRouter = require('./routes/items');
+
+// CALLING THE ROUTES
 app.use('/', indexRouter);
+app.use('/items', itemsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -37,27 +35,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json('error');
 });
-
-// CONNECT TO DB
-// variable that holds db credentials
-let myCredentials = require('../../dbCreds.json');
-
-// create the connection to database
-const connection = mysql.createConnection(myCredentials);
-
-// simple query
-connection.query(
-  'SELECT * FROM `address`',
-  function (err, results) {
-    if (err) {
-      console.log(err);
-    }
-
-    console.log(results); // results contains rows returned by server
-
-  }
-);
 
 module.exports = app;

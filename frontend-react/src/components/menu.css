@@ -5,16 +5,17 @@
 }
 
 .menu {
-  justify-content: center;
   width: 200px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   padding: 40px;
   background: var(--mcRed);
   border: solid 2px var(--mcBlack);
   border-radius: 20px;
   color: white;
 }
+
 .menu-item {
   text-align: center;
   background: var(--mcYellow);
