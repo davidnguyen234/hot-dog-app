@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+  
+}
+
+#header {
+  background:rgb(37, 37, 56);
+  min-height: 50px;
+  margin-top: 0px;
+}
+h3 {
+    margin-top:0px;
+    padding-top: 16px;
+    color: rgb(246, 248, 237);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
