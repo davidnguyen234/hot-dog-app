@@ -13,7 +13,7 @@ class Items extends React.Component {
 
     // Connects to the backend-express
     componentDidMount() {
-        fetch("http://localhost:3000/items")
+        fetch("http://localhost:9000/items")
             .then((results) => {
                 return results.json();
             }).then((items) => {

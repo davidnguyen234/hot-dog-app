@@ -1,10 +1,10 @@
 
-import OrderDetails from './components/OrderDetails';
-import OrdersList from './components/OrdersList';
-import './App.css';
+import OrderDetails from './OrderDetails';
+import OrdersList from './OrdersList';
+// import './App.css';
 import React, { Component } from 'react';
 import { render } from "react-dom";
-import Orders from './components/Orders';
+import Orders from './Orders';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { Route } from 'react-router';
 import { useState } from 'react';
@@ -24,7 +24,7 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
-    let myTestDataAPi = fetch("http://localhost:9000/vendor")
+    let myTestDataAPi = fetch("http://localhost:9000/order")
       .then((results) => {
         return results.json();
       }).then((myJson) => {
