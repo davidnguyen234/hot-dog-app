@@ -1,0 +1,33 @@
+{
+    "locations": [
+      {
+        "properties": {
+          "cart_id": 1,
+          "coordinates": [-122.3222, 47.6253],
+          "name": "Capitol Hill Cart",
+          "phone": "(206) 424-8458",
+          "address" : "800 E Roy St, Seattle, WA 98102"
+        }},
+
+        {
+          "properties": {
+            "cart_id": 2,
+            "coordinates": [-122.3569, 47.6323],
+            "name": "Queen Anne Cart",
+            "phone": "(206) 845-4854",
+            "address" : "1417 Queen Anne Ave N, Seattle, WA 98109"
+          }},
+
+          {
+            "properties": {
+              "cart_id": 3,
+              "coordinates": [-122.3348, 47.5830],
+              "name": "Sodo Cart",
+              "phone": "(206) 845-8582",
+              "address" : "2233 1st Ave S, Seattle, WA 98134"
+            }
+
+    }
+]
+}
+
