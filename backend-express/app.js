@@ -8,6 +8,8 @@ var app = express();
 var cors = require('cors');
 
 const indexRouter = require('./routes/index');
+const vendorRouter= require('./routes/vendor');
+const orderRouter = require('./routes/order');
 const mysql = require('mysql2');
 
 // view engine setup
@@ -23,7 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //OUR INDEX/HOME/LANDING/START ROUTE
 app.use('/', indexRouter);
-
+app.use('/vendor', vendorRouter);
+app.use('/order', orderRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -48,15 +51,15 @@ let myCredentials = require('../../dbCreds.json');
 const connection = mysql.createConnection(myCredentials);
 
 // simple query
-connection.query(
-  'SELECT * FROM `Customer`',
-  function (err, results) {
-    if (err) {
-      console.log(err);
-    }
-    console.log(results); // results contains rows returned by server
+// connection.query(
+//   'SELECT * FROM `order`',
+//   function (err, results) {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log(results); // results contains rows returned by server
 
-  }
-);
+//   }
+// );
 
 module.exports = app;
