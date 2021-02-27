@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
 import App from './App';
+import Item from './components/OrderLItem'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Item />
   </React.StrictMode>,
   document.getElementById('root')
 );

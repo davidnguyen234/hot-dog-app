@@ -1,0 +1,9 @@
+.page {
+    text-align: center;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}

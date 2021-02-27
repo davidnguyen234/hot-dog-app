@@ -1,0 +1,16 @@
+.vendor-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(245, 210, 12);
+  color: rgb(241, 3, 3);
+}
+
+.nav-links {
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
