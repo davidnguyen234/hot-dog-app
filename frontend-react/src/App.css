@@ -20,6 +20,15 @@ a {
   background-color: var(--bg);
   padding: 0 1rem;
   border-bottom: var(--border);
+.App {
+  text-align: center;
+ 
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+
 }
 
 .navbar-nav {
@@ -44,6 +53,10 @@ a {
   border-radius: 50%;
   padding: 5px;
   margin: 2px;
+.App-header {
+  
+  background-color: #db5800;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,6 +109,8 @@ a {
 .menu-primary-enter {
   position: absolute;
   transform: translateX(-110%);
+  font-size: calc(10px + 2vmin);
+  color: rgb(231, 216, 6);
 }
 
 .menu-primary-enter-active {
