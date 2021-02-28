@@ -15,6 +15,7 @@ import React from 'react';
 function OrderDetails(props) {
     return (
         <span>
+            
             <h2>{props.name}</h2>
             <h2>{props.id}</h2>
             <h2>{props.phone}</h2>

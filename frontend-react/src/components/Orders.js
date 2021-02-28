@@ -16,7 +16,7 @@ const Header = ({ title }) => {
 
   //////////////////////////////////////////////////////////////////////
   const DeleteOrder = (props) => {
-    OrdersList.filter((order) => order.vendor_id !== props);
+    OrdersList.filter((order) => order.order_id !== props);
     console.log('deleted');
   }
   //////////////////////////////////////////////////////////////////////

@@ -6,7 +6,7 @@ class OrderListItem extends React.Component {
     render() {
         return <div className='data'> 
            <ul id= "ords">
-            <li>vendor-id: {this.props.order.vendor_id}  
+            <li>Order-id: {this.props.order.oredr_id}  
             <Buttons color='red' text='Complete' 
             // onClick={onClick}
             /> </li>
