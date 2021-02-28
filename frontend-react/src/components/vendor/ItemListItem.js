@@ -1,26 +1,22 @@
 import React from 'react';
 
-let isAvailable = "Available: YES";
-function changeAvailability() {
-    console.log("click");
-    isAvailable = "no";
-
-}
-
 class ItemListItem extends React.Component {
-    // eventhandler
-
 
     render() {
+        const style = {
+            width: '340px',
+            border: '1px #AAA solid',
+            padding: '10px',
+            backgroundColor: '#FF0000'
+        }
+        if (this.props.activeItemId && (this.props.activeItemId === this.props.item.inventory_id)){
+            style.backgroundColor = '#32CD32';
+        }
         return (
-            <div className="item">
-                <div>
-                    <h1 key={this.props.item.item_id}>
-                        {this.props.item.inventory_type}
-                    </h1>
-                    <p> {isAvailable} </p>
-                </div>
-                <button onClick={changeAvailability}>Change Availability</button>
+            <div style={style} onClick={(e) => this.props.myClickHandler(e, this.props.item.inventory_id)}>
+                <h3>
+                    {this.props.item.inventory_type}
+                </h3>
             </div>);
     }
 }
