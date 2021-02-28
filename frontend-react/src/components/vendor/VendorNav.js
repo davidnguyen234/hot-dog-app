@@ -1,6 +1,6 @@
 import React from 'react';
-import '../css/vendorNav.css';
-import Orders from './OrderMain';
+import '../../css/vendorNav.css';
+import Orders from './../OrderMain';
 import Items from './Items';
 import {
     BrowserRouter as Router,

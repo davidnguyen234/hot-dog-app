@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 let isAvailable = "Available: YES";
 function changeAvailability() {
