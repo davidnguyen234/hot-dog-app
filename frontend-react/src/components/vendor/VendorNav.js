@@ -39,8 +39,7 @@ class VendorNav extends React.Component {
         this.setState({
             vendorid
         });
-        console.log("Clicked " + vendorid); // testing only
-        itemId = Math.random(); // changing the ID of the component forces the it to be remounted (if the url is correct)
+        itemId = Math.random(); //Changing the ID of the component forces the it to be remounted (if the url is correct)
     }
 
     render() {
