@@ -46,7 +46,6 @@ class VendorNav extends React.Component {
         const nav_links_style = {
             color: 'red',
         };
-        console.log("Render ALL " + this.state.vendorid);
         return (
             < Router >
                 <div className="vendor-nav">

@@ -14,6 +14,7 @@ function Itemlist(props) {
 
     return (
         <div className="list">
+            <h4>Hello Vendor: {props.vendorid}</h4>
             <h3>Select the items are currently available</h3>
             {myItemlistArray}
         </div>

@@ -30,13 +30,14 @@ class Items extends React.Component {
         this.setState({
             activeItemId
         });
-        console.log(e.target); // testing only
+        console.log("Click"); // testing only
     }
 
     render() {
         return (
             <div className='page'>
                 <ItemList
+                    vendorid={this.state.vendorid}
                     listOfItems={this.state.itemList}
                     activeItemId={this.state.activeItemId}
                     myClickHandler={this.selectActiveItem.bind(this)}
