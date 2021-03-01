@@ -25,7 +25,6 @@ class Items extends React.Component {
     // Eventhandler
     selectActiveItem(e, activeItemId) {
         e.preventDefault();
-        console.log(activeItemId);// testing
         this.setState({
             activeItemId
         });
