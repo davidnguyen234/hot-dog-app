@@ -28,6 +28,7 @@ class Items extends React.Component {
         this.setState({
             activeItemId
         });
+        console.log("Click"); // testing only
     }
     
     render() {

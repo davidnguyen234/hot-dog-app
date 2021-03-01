@@ -7,10 +7,16 @@ class ItemListItem extends React.Component {
             width: '340px',
             border: '1px #AAA solid',
             padding: '10px',
-            backgroundColor: '#FF0000'
+            backgroundColor: '#FF0000' //RED
         }
-        if (this.props.activeItemId && (this.props.activeItemId === this.props.item.inventory_id)){
-            style.backgroundColor = '#32CD32';
+
+        /* 
+        * inventory_avail
+        * 0 == false (does NOT have)
+        * 1 == true (does have)
+        */
+        if(this.props.item.inventory_avail === 1){
+            style.backgroundColor = '#32CD32'; // GREEN
         }
         return (
             <div style={style} onClick={(e) => this.props.myClickHandler(e, this.props.item.inventory_id)}>
