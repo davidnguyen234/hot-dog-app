@@ -6,31 +6,33 @@ class Items extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            itemList: []
+            itemList: [],
+            vendorid: props.vendorid
+
         }
     }
 
-    // Connects to the backend-express
+    // Connects to backend. Adds all the vendor information to the itemList
     componentDidMount() {
-        fetch("http://localhost:9000/items")
-        .then((results) => {
-            return results.json();
-        }).then((items) => {
-            this.setState({
-                itemList: [...items] // state hold the array of all Items
+        fetch("http://localhost:9000/items/" + this.state.vendorid) // NEED WORK!! Must re-mount everytime a dropdown is clicked
+            .then((results) => {
+                return results.json();
+            }).then((items) => {
+                this.setState({
+                    itemList: [...items]
+                });
             });
-        });
     }
 
-    // Eventhandler
+    // [Eventhandler] retreves the ID of the selected item
     selectActiveItem(e, activeItemId) {
         e.preventDefault();
         this.setState({
             activeItemId
         });
-        console.log("Click"); // testing only
+        console.log(e.target); // testing only
     }
-    
+
     render() {
         return (
             <div className='page'>

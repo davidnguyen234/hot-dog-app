@@ -2,13 +2,14 @@ import React from 'react';
 import ItemListItem from './ItemListItem';
 
 function Itemlist(props) {
+    let key = 0; // key for each item in the list
     const myItemlistArray = props.listOfItems.map((arrayItem) => {
         return <ItemListItem
-                    key={arrayItem.inventory_id}
-                    item={arrayItem}
-                    activeItemId={props.activeItemId}
-                    myClickHandler={props.myClickHandler}
-                />
+            key={key++}
+            item={arrayItem}
+            activeItemId={props.activeItemId}
+            myClickHandler={props.myClickHandler}
+        />
     });
 
     return (

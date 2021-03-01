@@ -15,7 +15,7 @@ class ItemListItem extends React.Component {
         * 0 == false (does NOT have)
         * 1 == true (does have)
         */
-        if(this.props.item.inventory_avail === 1){
+        if (this.props.item.inventory_avail === 1) {
             style.backgroundColor = '#32CD32'; // GREEN
         }
         return (
