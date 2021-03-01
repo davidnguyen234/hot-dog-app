@@ -10,6 +10,8 @@ import {
     Link,
 } from 'react-router-dom';
 
+let itemId = 1; // ID for the item
+
 class VendorNav extends React.Component {
     constructor(props) {
         super(props);
@@ -37,13 +39,15 @@ class VendorNav extends React.Component {
         this.setState({
             vendorid
         });
-        console.log(vendorid); // testing only
+        console.log("Clicked " + vendorid); // testing only
+        itemId = Math.random(); // changing the ID of the component forces the it to be remounted (if the url is correct)
     }
 
     render() {
         const nav_links_style = {
             color: 'red',
         };
+        console.log("Render ALL " + this.state.vendorid);
         return (
             < Router >
                 <div className="vendor-nav">
@@ -66,7 +70,7 @@ class VendorNav extends React.Component {
                     {/* <Route path="/orders" component={Orders} exact /> */}
                     <Route
                         path={"/items"}
-                        render={(props) => <Items {...props} vendorid={this.state.vendorid} />}
+                        render={(props) => <Items {...props} key={itemId} vendorid={this.state.vendorid} />}
                         exact
                     />
                 </Switch>
