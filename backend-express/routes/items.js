@@ -6,7 +6,7 @@ var db = require('../db');
 router.get('/', function (req, res, next) {
     // Return all Items
     db.query(
-        'SELECT vendor_id, inventory_type, inventory_avail FROM `vendor_has_inventory` JOIN `inventory` USING(inventory_id) ORDER BY vendor_id;',
+        'SELECT vendor_id, inventory_id, inventory_type, inventory_avail FROM `vendor_has_inventory` JOIN `inventory` USING(inventory_id) ORDER BY vendor_id;',
         function (err, results) {
             if (!err) {
                 res.send(results);
@@ -21,7 +21,7 @@ router.get('/', function (req, res, next) {
 router.get('/:id', function (req, res, next) {
     // Return Item by id
     db.query(
-        'SELECT vendor_id, inventory_type, inventory_avail FROM `vendor_has_inventory` JOIN `inventory` USING(inventory_id) WHERE vendor_id = ' + req.params.id,
+        'SELECT vendor_id, inventory_id, inventory_type, inventory_avail FROM `vendor_has_inventory` JOIN `inventory` USING(inventory_id) WHERE vendor_id = ' + req.params.id,
         function (err, results) {
             if (!err) {
                 res.send(results);
@@ -39,7 +39,6 @@ router.put('/:id', function (req, res, next) {
     const inventoryId = req.body.inventory_id;
     const sqlUpdate = 
         'UPDATE `Vendor_has_Inventory` SET inventory_avail = ? WHERE vendor_id = '+ req.params.id + ' && inventory_id = ?';
-    // Return all Items
     db.query( sqlUpdate, [inventoryAvail, inventoryId],
         function (err, results) {
             if (!err) {
@@ -49,7 +48,6 @@ router.put('/:id', function (req, res, next) {
             }
         }
     );
-    // res.send("Created a new item");
 });
 
 module.exports = router;
