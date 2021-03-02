@@ -1,36 +1,38 @@
 import React from 'react';
 import '../../css/items.css';
 import ItemList from './ItemList';
+import Axios from "axios";
 
 class Items extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             itemList: [],
-            vendorid: props.vendorid
-
+            vendorid: props.vendorid,
+            isAvail: 1 // Green
         }
     }
-
     // Connects to backend. Adds all the vendor information to the itemList
     componentDidMount() {
-        fetch("http://localhost:9000/items/" + this.state.vendorid) // NEED WORK!! Must re-mount everytime a dropdown is clicked
-            .then((results) => {
-                return results.json();
-            }).then((items) => {
-                this.setState({
-                    itemList: [...items]
-                });
-            });
+        Axios.get("http://localhost:9000/items/" + this.state.vendorid).then(res => {
+            this.setState({ itemList: [...res.data] })
+        });
+    }
+
+    // Connects to the backend and updates an existing table
+    updateItem(activeItemId) {
+        Axios.put("http://localhost:9000/items/" + this.state.vendorid, {
+            "inventory_id": activeItemId,
+            "inventory_avail": this.state.isAvail
+        })
+            .catch(err => { console.log(err) });
     }
 
     // [Eventhandler] retreves the ID of the selected item
     selectActiveItem(e, activeItemId) {
         e.preventDefault();
-        this.setState({
-            activeItemId
-        });
-        console.log("Click"); // testing only
+        this.setState({ activeItemId });
+        this.updateItem(activeItemId);
     }
 
     render() {

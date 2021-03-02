@@ -35,16 +35,16 @@ router.get('/:id', function (req, res, next) {
 
 /* POST(id) edit the item availbility of the given venfor id. */
 router.put('/:id', function (req, res, next) {
-    const inventoryAvail= req.body.inventory_avail;
+    const inventoryAvail = req.body.inventory_avail;
     const inventoryId = req.body.inventory_id;
-    const sqlUpdate = 
-        'UPDATE `Vendor_has_Inventory` SET inventory_avail = ? WHERE vendor_id = '+ req.params.id + ' && inventory_id = ?';
-    db.query( sqlUpdate, [inventoryAvail, inventoryId],
+    const sqlUpdate =
+        'UPDATE `Vendor_has_Inventory` SET inventory_avail = ? WHERE vendor_id = ' + req.params.id + ' && inventory_id = ?';
+    db.query(sqlUpdate, [inventoryAvail, inventoryId],
         function (err, results) {
             if (!err) {
                 return res.send(results);
             } else {
-               return console.log(err);
+                return console.log(err);
             }
         }
     );
