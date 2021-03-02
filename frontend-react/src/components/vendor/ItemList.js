@@ -8,6 +8,7 @@ function Itemlist(props) {
             key={key++}
             item={arrayItem}
             activeItemId={props.activeItemId}
+            isAvail={props.isAvail}
             myClickHandler={props.myClickHandler}
         />
     });

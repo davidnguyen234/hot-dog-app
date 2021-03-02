@@ -9,7 +9,6 @@ class Items extends React.Component {
         this.state = {
             itemList: [],
             vendorid: props.vendorid,
-            isAvail: 1 // Green // WORKING PROGRESS
         }
     }
 
@@ -25,15 +24,15 @@ class Items extends React.Component {
     }
 
     // Connects to the backend and updates an existing table
-    updateItem(activeItemId) {
+    updateItem(activeItemId, isAvail) {
         Axios.put("http://localhost:9000/items/" + this.state.vendorid, {
             "inventory_id": activeItemId,
-            "inventory_avail": this.state.isAvail
+            "inventory_avail": isAvail
         })
             .catch(err => { console.log(err) });
     }
 
-    // Function to enure promise order is correct
+    // Function to enure promise order is correct (PUT before GET)
     wait() {
         return new Promise(resolve => {
             setTimeout(() => {
@@ -42,11 +41,20 @@ class Items extends React.Component {
         });
     }
 
-    // [Eventhandler] retreves the ID of the selected item
-    async selectActiveItem(e, activeItemId) {
+    /* 
+     * [Eventhandler] retreves the current item id and item availability
+     * The availability is the switched and a PUT route is called to edit the databse
+     * Finally the GET function is called to re-mount/render the component
+     */
+    async selectActiveItem(e, activeItemId, isAvail) {
         e.preventDefault();
-        this.setState({ activeItemId });
-        this.updateItem(activeItemId);
+        // toggle the avalibility
+        if (isAvail === 1) {
+            isAvail = 0;
+        } else {
+            isAvail = 1;
+        }
+        this.updateItem(activeItemId, isAvail);
         await this.wait(); // Use to make sure the PUT finished before the new GET happens
         this.getItem();
     }
@@ -58,6 +66,7 @@ class Items extends React.Component {
                     vendorid={this.state.vendorid}
                     listOfItems={this.state.itemList}
                     activeItemId={this.state.activeItemId}
+                    isAvail={this.state.isAvail}
                     myClickHandler={this.selectActiveItem.bind(this)}
                 />
             </div>

@@ -7,7 +7,7 @@ class ItemListItem extends React.Component {
             width: '340px',
             border: '1px #AAA solid',
             padding: '10px',
-            backgroundColor: '#FF0000' //RED
+            backgroundColor: '#FF0000' // RED
         }
 
         /* 
@@ -19,7 +19,7 @@ class ItemListItem extends React.Component {
             style.backgroundColor = '#32CD32'; // GREEN
         }
         return (
-            <div style={style} onClick={(e) => this.props.myClickHandler(e, this.props.item.inventory_id)}>
+            <div style={style} onClick={(e) => this.props.myClickHandler(e, this.props.item.inventory_id, this.props.item.inventory_avail)}>
                 <h3>
                     {this.props.item.inventory_type}
                 </h3>
