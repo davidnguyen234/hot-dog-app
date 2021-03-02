@@ -1,0 +1,31 @@
+:root {
+  --mcYellow: #ffc72c;
+  --mcRed: #da291c;
+  --mcBlack: #27251f;
+}
+
+.menu {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  background: var(--mcRed);
+  border: solid 2px var(--mcBlack);
+  border-radius: 20px;
+  color: white;
+}
+
+.menu-item {
+  text-align: center;
+  background: var(--mcYellow);
+  border-radius: 20px;
+  margin: 3px;
+  cursor: pointer;
+  padding: 15px;
+  height: 28px;
+  border-bottom: 1px solid rgb(105, 98, 93);
+}
+.menu-item:hover {
+  color: var(--mcRed);
+}
