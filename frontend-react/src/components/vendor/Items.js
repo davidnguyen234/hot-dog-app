@@ -9,11 +9,16 @@ class Items extends React.Component {
         this.state = {
             itemList: [],
             vendorid: props.vendorid,
-            isAvail: 1 // Green
+            isAvail: 1 // Green // WORKING PROGRESS
         }
     }
-    // Connects to backend. Adds all the vendor information to the itemList
+
     componentDidMount() {
+        this.getItem();
+    }
+
+    // Connects to backend. Adds all the vendor information to the itemList
+    getItem() {
         Axios.get("http://localhost:9000/items/" + this.state.vendorid).then(res => {
             this.setState({ itemList: [...res.data] })
         });
@@ -28,11 +33,22 @@ class Items extends React.Component {
             .catch(err => { console.log(err) });
     }
 
+    // Function to enure promise order is correct
+    wait() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve('resolved');
+            }, 1000);
+        });
+    }
+
     // [Eventhandler] retreves the ID of the selected item
-    selectActiveItem(e, activeItemId) {
+    async selectActiveItem(e, activeItemId) {
         e.preventDefault();
         this.setState({ activeItemId });
         this.updateItem(activeItemId);
+        await this.wait(); // Use to make sure the PUT finished before the new GET happens
+        this.getItem();
     }
 
     render() {
