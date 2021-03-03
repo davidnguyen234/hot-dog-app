@@ -8,7 +8,7 @@ import './menu.css';
 //CLICK HANDLER
 const handleClick = (e) => {
     e.preventDefault();
-    console.log('This: ', e.target, 'was clicked!');
+    console.log('This: ', e.target.textContent, 'was clicked!');
 }
 
 class Menu extends React.Component {
@@ -16,7 +16,7 @@ class Menu extends React.Component {
         super(props);
 
         this.state = {
-            menuItems: [props.item, 'Item1', 'Item2', 'Item3']
+            menuItems: []
             // items: this.props.items
         }
     }
@@ -26,6 +26,10 @@ class Menu extends React.Component {
         fetch("http://localhost:9000/menu")
             .then((results) => {
                 return results.json();
+            }).then((items) => {
+                this.setState({
+                    menuItems: [...items]
+                });
             });
     }
 
@@ -47,11 +51,11 @@ class Menu extends React.Component {
                 >
 
                     <div className="menu" onClick={handleClick}>
-                        {/*TODO: generate dynamic menu-items from db/array */}
+
                         <ul className="list-group">
                             {this.state.menuItems.map(menuItem => (
-                                <li key={menuItem} className="menu-item">
-                                    {menuItem}
+                                <li key={menuItem.id} className="menu-item" text={menuItem.title}>
+                                    {menuItem.inventory_type}
                                 </li>
                             ))}
                         </ul>
