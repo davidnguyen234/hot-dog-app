@@ -2,8 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Buttons = ({ color, text, onClick }) => {
+   function handleClick(e) {
+      e.preventDefault();
+      console.log('The order is compeleted.');
+  }
    return (
-      <button onClick={onClick} style={{ backgroundColor: color }}
+      <button onClick={handleClick} style={{ backgroundColor: color }}
          className='btn'>{text}
       </button>
    )

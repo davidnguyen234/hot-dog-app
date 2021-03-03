@@ -1,36 +1,17 @@
-
-// import { FaTimes } from 'react-icons/fa'
-// import { render } from '../../../backend-express/app';
-// const Item = ({ order, onDelete}) => {
-//     return (
-//         <div className= 'order'>
-//            <h3>
-//                {order.name} <FaTimes style={{ color: 'red', cursor: 'pointer'}} onClick={() => onDelete(order.id)}/></h3> 
-//            <p>{order.date}</p> 
-//         </div>
-//     )
-// }
 import React from 'react';
+import { render } from "react-dom";
+//import OrderListItem from './ItemListItem';
 
 function OrderDetails(props) {
+    const style={
+        color: ' #333 ',
+    }
     return (
-        <span>
-            <h2>{props.name}</h2>
-            <h2>{props.id}</h2>
-            <h2>{props.phone}</h2>
-            <h2>{props.email}</h2>
+        <span style={style}>
+            <h2>Price: { this.props.order.order_price } |
+             Date: { this.props.order.order_date_time }</h2> 
         </span>
-    )
+     ) ;
 }
-// }
 
-// export default OrderDetails
-
-
-// // export default Item
-// function OrderDetails(props) {
-//     render(
-
-//     );
-// }
 export default OrderDetails; 
