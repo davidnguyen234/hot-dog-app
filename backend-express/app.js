@@ -21,6 +21,7 @@ const cartsRouter = require('./routes/carts')
 const vendorRouter = require('./routes/vendor');
 const orderRouter = require('./routes/order');
 let itemsRouter = require('./routes/items');
+const menuRouter = require('./routes/menu');
 
 // CALLING THE ROUTES
 app.use('/', indexRouter);
@@ -28,6 +29,7 @@ app.use('/items', itemsRouter);
 app.use('/carts', cartsRouter);
 app.use('/vendor', vendorRouter);
 app.use('/order', orderRouter);
+app.use('/menu', menuRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
