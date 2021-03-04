@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/vendorNav.css';
-import Orders from './../OrderMain';
+// import Orders from './../OrderMain';
 import Items from './Items';
 import VendorDropDown from './VendorDropDown';
 import {
@@ -56,16 +56,16 @@ class VendorNav extends React.Component {
                         myClickHandler={this.selectActiveVendor.bind(this)}
                     />
                     <ul className="nav-links">
-                        <Link style={nav_links_style} to="#/orders">
+                        <Link style={nav_links_style} to="/orders">
                             <li>Orders</li>
                         </Link>
-                        <Link style={nav_links_style} to="#/items">
+                        <Link style={nav_links_style} to="/items">
                             <li>Items</li>
                         </Link>
                     </ul>
                 </div>
                 <Switch>
-                    <Route path="/orders" component={Orders} exact />
+                    {/* <Route path="/orders" component={Orders} exact /> */}
                     <Route
                         path={"/items"}
                         render={(props) => <Items {...props} key={itemId} vendorid={this.state.vendorid} />}
