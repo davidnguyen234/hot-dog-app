@@ -1,8 +1,7 @@
 import React from 'react';
 import Map from './Map';
 import Menu from './Menu';
-import Items from './Items';
-import Orders from './Orders';
+import Vendor from './VendorNav';
 import '../css/Nav.css';
 import {
     BrowserRouter as Router,
@@ -26,20 +25,17 @@ export default function Nav() {
                     <Link style={nav_links_style} to="/menu">
                         <li>Menu</li>
                     </Link>
-                    <Link style={nav_links_style} to="/items">
-                        <li>Items</li>
+                    <Link style={nav_links_style} to="/vendor">
+                        <li>Vendor</li>
                     </Link>
-                    <Link style={nav_links_style} to="/orders">
-                        <li>Orders</li>
-                    </Link>
+                    
                    
                 </ul>
             </div>
             <Switch>
                 <Route path="/map" component={Map} exact />
                 <Route path="/menu" component={Menu} exact />
-                <Route path="/items" component={Items} exact />
-                <Route path="/orders" component={Orders} exact />
+                <Route path="/vendor" component={Vendor} exact />
             </Switch>
         </Router>
     );
