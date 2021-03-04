@@ -10,6 +10,7 @@ function VendorDropDown(props) {
                 onClick={(e) => props.myClickHandler(e, vendorIdArray.vendor_id)}
             >
                 {vendorIdArray.vendor_id}
+                <br></br>
             </Dropdown.Item>
         )
     });
