@@ -1,6 +1,6 @@
 import React from 'react';
-import '../css/vendorNav.css';
-import Orders from './Orders';
+import '../../css/vendorNav.css';
+import Orders from './../OrderMain';
 import Items from './Items';
 import {
     BrowserRouter as Router,
@@ -17,7 +17,7 @@ function VendorNav() {
     return (
         <Router>
             <div className="vendor-nav">
-                <h3> LOGO </h3>
+                <h3> Vendor Page </h3>
                 <ul className="nav-links">
                     <Link style={nav_links_style} to="/orders">
                         <li>Orders</li>
