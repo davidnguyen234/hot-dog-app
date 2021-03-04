@@ -1,8 +1,6 @@
-
 import React from 'react';
 import Popup from 'reactjs-popup';
 import Button from './Button';
-
 import './menu.css';
 
 //CLICK HANDLER
@@ -17,10 +15,8 @@ class Menu extends React.Component {
 
         this.state = {
             menuItems: []
-            // items: this.props.items
         }
     }
-
 
     componentDidMount() {
         fetch("http://localhost:9000/menu")
@@ -33,10 +29,7 @@ class Menu extends React.Component {
             });
     }
 
-
     render() {
-
-
         return (
             <div className="menu">
                 <Popup
@@ -54,7 +47,7 @@ class Menu extends React.Component {
 
                         <ul className="list-group">
                             {this.state.menuItems.map(menuItem => (
-                                <li key={menuItem.id} className="menu-item" text={menuItem.title}>
+                                <li key={menuItem.inventory_id} className="menu-item" text={menuItem.title}>
                                     {menuItem.inventory_type}
                                 </li>
                             ))}
@@ -65,9 +58,5 @@ class Menu extends React.Component {
             </div>
         )
     }
-
-
 };
-
-
-export default Menu
+export default Menu;
