@@ -13,7 +13,6 @@ class OrderListItem extends React.Component {
         }
         return (
             <div className='data' style={style} onClick={(e) => this.props.myClickHandler(e, this.props.order.order_id)} >
-                <body>
                     <ul id="ords">
                         <li>Order # :  {this.props.order.order_id}
                             <button 
@@ -25,7 +24,6 @@ class OrderListItem extends React.Component {
                         <p>customer # :  {this.props.order.cust_id} </p>
                         <p>-----------------------------------------------------------------------------------------------------</p>
                     </ul>
-                </body>
             </div>);
     }
 }
