@@ -1,5 +1,5 @@
 
-import Item from './Item';
+
 import { useState } from 'react';
 
 const Orders = ({ ListOfOrders, onDelete }) => {

@@ -1,0 +1,34 @@
+.data body{
+    border: 2 px;
+    background-color:#ffc72c ;
+    height: 90px;
+    width: 600px;
+    
+}
+
+.btn{
+    margin-left: 350px;
+
+    color:white;
+    height: 40px;
+    width: 100px;
+ 
+}
+.data li, p{
+    /* color:brown; */
+}
+.data p{
+    margin-top: -2px;
+    margin-left:-15px
+}
+body{
+    background-color: #ffc72c;
+    width: 600px;
+}
+.header h1{
+    color:#da291c;
+    text-align: center;
+}
+.header p{
+    margin-left: 33px;
+}
