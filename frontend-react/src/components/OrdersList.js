@@ -1,6 +1,6 @@
 import React from 'react';
 import OrderListItem from './OrderListItem';
-import Buttons from './Buttons';
+//import Buttons from './Buttons';
 
 
 function OrdersList(props) {
@@ -12,8 +12,8 @@ function OrdersList(props) {
                 order={orderLItem} 
                 activeOrderId= {props.activeOrderId}
                 myClickHandler={props.myClickHandler} 
+                deleteHandler={props.deleteHandler}
                /> 
- 
     </div>
     });
    

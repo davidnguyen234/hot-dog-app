@@ -40,11 +40,11 @@ router.get('/:id',(req, res, next) => {
 
 
 //update order status
-router.put('/:id', (req, res, next) => {
-   let mySQLQuery = `UPDATE order SET  ${req.params.order_status} = 1 WHERE order_ id = ${req.params.id}`;
+router.post('/:id', (req, res, next) => {
+   let mySQLQuery = `UPDATE \`order\` SET  order_status = 1 WHERE order_id = ${req.params.id}`;
    connection.query(mySQLQuery, (error, results) => {
       if(error) {
-         res.sendStatus(500);  
+         res.sendStatus(error);  
       }else {
          res.send(results);
       }
@@ -54,18 +54,30 @@ router.put('/:id', (req, res, next) => {
 
 //Create order
 router.post('/',(req, res, next) => {
-   let mySQLQuery=  `INSERT INTO 'order' order_id, vendor_id ,cust_id,
+   let mySQLQuery=  `INSERT INTO \`order\` order_id, vendor_id ,cust_id,
                       order_price, order_date_time, order_status) VALUES
-               (${req.body.order_id},${req.body.vendor_id},${req.body.cust_id},
-               ${req.body.order_price},${req.body.order_date_time},${req.body.order_status}`;  
+               (${req.params.order_id},${req.params.vendor_id},${req.params.cust_id},
+               ${req.params.order_price},${req.params.order_date_time},${req.params.order_status}`;  
   //connection.connect();
   connection.query(mySQLQuery, (error, results) => {
      if(error) {
-        res.send(500);
+        res.sendStatus(500);
      }
         res.send(results);
      })
   //connection.end();
 });
 
+
+// router.delete('/:id', (req,res) => {
+//    const { id } =req.params.is;
+//     let mySQLQuery=  `DELETE FROM \`order\` WHERE order_id = ${req.params.id}`;
+//    // mySQLQuery= mySQLQuery.filter((mySQLQuery) =>  order_id != req.params.id);
+//    connection.query(mySQLQuery, (error, results) => {
+//       if(error) {
+//          res.sendStatus(500);
+//       }
+//          res.send(results);
+//       })
+// })
 module.exports = router; 

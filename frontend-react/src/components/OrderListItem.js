@@ -1,15 +1,9 @@
-import React, { Component } from 'react';
-import Buttons from './Buttons' ;
-import OrderMain from'./OrderMain';
+import React from 'react';
+//import Buttons from './Buttons' ;
+//import OrderMain from'./OrderMain';
 // import Orders from './Orders';
 import '../css/Order.css';
-import OrdersList from './OrdersList';
-
-function DeleteOrder() {
- 
-    //handler here
-    console.log("click");
-}
+//import OrdersList from './OrdersList';
 
 class OrderListItem extends React.Component { 
 
@@ -27,9 +21,10 @@ class OrderListItem extends React.Component {
            
            <ul id= "ords">
             <li>Order # :  {this.props.order.order_id}  
-             <Buttons color='#da291c' text='Complete' 
-             onClick={DeleteOrder}
-            /> 
+             
+             <button onClick={(e) => this.props.deleteHandler(e, this.props.order.order_id)} style={{ backgroundColor: '#da291c' }}
+         className='btn'>Complete
+      </button>
              </li>
              
             <p>customer # :  {this.props.order.cust_id} </p>  {/*date of order?*/}
