@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './components/OrderMain';
-// import Item from './components/Items';
-// import Map from './components/Map';
-// import Menu from './components/Menu/Menu';
-import VendorNav from './components/vendor/VendorNav';
+import Header from './components/Header';
+import Nav from './components/Nav';
+import './css/App.css';
+
 ReactDOM.render(
   <React.StrictMode>
-    <VendorNav />
+      <Header></Header>
+        <Nav></Nav>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
