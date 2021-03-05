@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../css/Order.css';
+import '../../../css/Order.css';
 
 const Header = ({ title }) => {
   return (
