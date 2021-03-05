@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/vendorNav.css';
-// import Orders from './../OrderMain';
+import Orders from './../OrderMain';
 import Items from './Items';
 import VendorDropDown from './VendorDropDown';
 import {
@@ -65,7 +65,7 @@ class VendorNav extends React.Component {
                     </ul>
                 </div>
                 <Switch>
-                    {/* <Route path="/orders" component={Orders} exact /> */}
+                    <Route path="/orders" component={Orders} exact />
                     <Route
                         path={"/items"}
                         render={(props) => <Items {...props} key={itemId} vendorid={this.state.vendorid} />}
