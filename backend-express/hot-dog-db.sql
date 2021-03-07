@@ -26,13 +26,18 @@ CREATE TABLE `Employee` (
 -- Table Address
 -- -----------------------------------------------------
 CREATE TABLE `Address` (
+ 
+  address_longitude FLOAT NOT NULL,
+  address_latitude  FLOAT NOT NULL,
+  vendor_id INT NOT NULL,
   address_id INT NOT NULL,
-  address_suite INT NOT NULL,
-  address_street VARCHAR(45) NOT NULL,
-  address_zip INT NOT NULL,
-  address_city VARCHAR(45) NOT NULL,
-  address_state VARCHAR(45) NOT NULL,
-  PRIMARY KEY (address_id));
+  PRIMARY KEY (address_id)
+-- 	CONSTRAINT FOREIGN KEY (vendor_id)  REFERENCES Vendor (vendor_id)
+--     ON DELETE NO ACTION 
+--     ON UPDATE NO ACTION
+
+  );
+
 
 
 -- -----------------------------------------------------
@@ -51,6 +56,23 @@ CREATE TABLE `Vendor` (
   CONSTRAINT fk_Vendor_Address FOREIGN KEY (address_id) REFERENCES Address (address_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table Payment
+-- -----------------------------------------------------
+CREATE TABLE `Payment` (
+  payment_id INT NOT NULL,
+  vendor_id INT NOT NULL,
+  payment_price INT NOT NULL,
+  payment_date_time DATETIME NOT NULL,
+  PRIMARY KEY (payment_id),
+    INDEX fk_Payment_Vendor_idx (vendor_id ASC) VISIBLE,
+  CONSTRAINT fk_Payment_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+
+);
 
 
 -- -----------------------------------------------------
@@ -94,16 +116,6 @@ CREATE TABLE `Order` (
     );
 
 
--- -----------------------------------------------------
--- Table Payment
--- -----------------------------------------------------
-CREATE TABLE `Payment` (
-  payment_id INT NOT NULL,
-  payment_price INT NOT NULL,
-  payment_date_time DATETIME NOT NULL,
-  PRIMARY KEY (payment_id)
-);
-
 
 -- -----------------------------------------------------
 -- Table Vendor_has_Inventory
@@ -135,12 +147,12 @@ CREATE TABLE `Vendor_has_Inventory` (
 
 INSERT INTO `Address`
   VAlUES
-  (1, 44, 'Forest Dale', 98101, 'Seattle', 'Washington'),
-  (2, 100, 'Pleasure', 98114, 'Seattle', 'Washington'),
-  (3, 23, 'Melby', 98101, 'Seattle', 'Washington'),
-  (4, 2800, 'Sherman', 98125, 'Seattle', 'Washington'),
-  (5, 101, 'Cottonwood', 98101, 'Seattle', 'Washington'),
-  (6, 562, 'Rockefeller', 98122, 'Seattle', 'Washington');
+  (47.66999, -122.35084, 101, 1),
+  (47.67900, -122.38495, 102, 2),
+  (47.69183, -122.34100, 103, 3),
+  (47.69391, -122.40091, 104, 4),
+  (47.62590, -122.32045, 105, 5),
+  (47.44621, -122.30076, 106, 6);
 
 
 INSERT INTO `Employee`
@@ -158,8 +170,8 @@ INSERT INTO `Vendor`
   VALUES
   (101, 1, 2), ## Caprice Gregoratti at address #2
   (102, 3, 1),
-  (103, 4, 6);
-
+  (103, 2, 6),
+  (104, 4, 5);
 
 
 INSERT INTO `Order`
@@ -173,12 +185,12 @@ INSERT INTO `Order`
 
 INSERT INTO `Payment`
   VALUES
-  (001, 14.98, '2021-02-20 09:58:17'),
-  (002, 7.99, '2021-02-20 10:26:09'),
-  (003, 4.98, '2021-02-21 07:01:04'),
-  (004, 14.97, '2021-02-21 01:50:38'),
-  (005, 25.96, '2021-02-22 12:40:57'),
-  (006, 3.97, '2021-02-24 13:34:31');
+  (001, 101, 14.98, '2021-02-20 09:58:17'),
+  (002, 101, 7.99, '2021-02-20 10:26:09'),
+  (003, 102, 4.98, '2021-02-21 07:01:04'),
+  (004, 103,  14.97, '2021-02-21 01:50:38'),
+  (005, 104,  25.96, '2021-02-22 12:40:57'),
+  (006, 102,  3.97, '2021-02-24 13:34:31');
 
 INSERT INTO `Inventory`
   VALUES

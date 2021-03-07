@@ -26,8 +26,6 @@ class OrderListItem extends React.Component {
          className='btn'>Complete
       </button>
              </li>
-             
-            {/* <p>customer # :  {this.props.order.cust_id} </p>  date of order? */}
             <p>-----------------------------------------------------------------------------------------------------</p>
             </ul> 
             </body>
