@@ -78,38 +78,20 @@ CREATE TABLE `Inventory` (
 
 
 -- -----------------------------------------------------
--- Table Customer
--- -----------------------------------------------------
-CREATE TABLE `Customer` (
-  cust_id INT NOT NULL,
-  address_id INT NOT NULL,
-  cust_first_name VARCHAR(45) NOT NULL,
-  cust_last_name VARCHAR(45) NOT NULL,
-  PRIMARY KEY (cust_id),
-  INDEX fk_Customer_Address_idx (address_id ASC) VISIBLE,
-  CONSTRAINT fk_Customer_Address FOREIGN KEY (address_id) REFERENCES Address (address_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
-
--- -----------------------------------------------------
 -- Table Order
 -- -----------------------------------------------------
 CREATE TABLE `Order` (
   order_id INT NOT NULL,
   vendor_id INT NOT NULL,
-  cust_id INT NOT NULL,
   order_price VARCHAR(45) NOT NULL,
   order_date_time DATETIME NOT NULL,
+  order_status TINYINT NOT NULL,
   PRIMARY KEY (order_id),
   INDEX fk_Order_Vendor_idx (vendor_id ASC) VISIBLE,
-  INDEX fk_Order_Customer_idx (cust_id ASC) VISIBLE,
   CONSTRAINT fk_Order_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT fk_Order_Customer FOREIGN KEY (cust_id) REFERENCES Customer (cust_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION
+    );
 
 
 -- -----------------------------------------------------
@@ -117,14 +99,10 @@ CREATE TABLE `Order` (
 -- -----------------------------------------------------
 CREATE TABLE `Payment` (
   payment_id INT NOT NULL,
-  cust_id INT NOT NULL,
   payment_price INT NOT NULL,
   payment_date_time DATETIME NOT NULL,
-  PRIMARY KEY (payment_id),
-  INDEX fk_Payment_Customer_idx (cust_id ASC) VISIBLE,
-  CONSTRAINT fk_Payment_Customer FOREIGN KEY (cust_id) REFERENCES Customer (cust_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  PRIMARY KEY (payment_id)
+);
 
 
 -- -----------------------------------------------------
@@ -182,30 +160,25 @@ INSERT INTO `Vendor`
   (102, 3, 1),
   (103, 4, 6);
 
-INSERT INTO `Customer`
-  VALUES
-  (1, 2, 'Fidelity' , 'Bennis'),
-  (2, 5, 'Magda'    , 'Margrie'),
-  (3, 4, 'Alfons'   , 'Frearson'),
-  (4, 3, 'Florri'   , 'Ormerod');
+
 
 INSERT INTO `Order`
   VALUES
-  (001, 101, 1, 14.98, '2021-02-20 09:58:17'),
-  (002, 103, 4, 7.99, '2021-02-20 10:26:09'),
-  (003, 103, 1, 4.98, '2021-02-21 07:01:04'),
-  (004, 101, 2, 14.97, '2021-02-21 01:50:38'),
-  (005, 102, 4, 25.96, '2021-02-22 12:40:57'),
-  (006, 101, 3, 3.97, '2021-02-24 13:34:31');
+  (001, 101, 14.98, '2021-02-20 09:58:17', 0),
+  (002, 103, 7.99, '2021-02-20 10:26:09', 0),
+  (003, 103, 4.98, '2021-02-21 07:01:04', 0),
+  (004, 101, 14.97, '2021-02-21 01:50:38', 0),
+  (005, 102, 25.96, '2021-02-22 12:40:57', 0),
+  (006, 101, 3.97, '2021-02-24 13:34:31', 0);
 
 INSERT INTO `Payment`
   VALUES
-  (001, 1, 14.98, '2021-02-20 09:58:17'),
-  (002, 4, 7.99, '2021-02-20 10:26:09'),
-  (003, 1, 4.98, '2021-02-21 07:01:04'),
-  (004, 2, 14.97, '2021-02-21 01:50:38'),
-  (005, 4, 25.96, '2021-02-22 12:40:57'),
-  (006, 3, 3.97, '2021-02-24 13:34:31');
+  (001, 14.98, '2021-02-20 09:58:17'),
+  (002, 7.99, '2021-02-20 10:26:09'),
+  (003, 4.98, '2021-02-21 07:01:04'),
+  (004, 14.97, '2021-02-21 01:50:38'),
+  (005, 25.96, '2021-02-22 12:40:57'),
+  (006, 3.97, '2021-02-24 13:34:31');
 
 INSERT INTO `Inventory`
   VALUES
@@ -238,3 +211,5 @@ INSERT INTO `Vendor_has_Inventory`
 #▒█░▒█ ▒█░▒█ ▒█▀▀▀ ▒█▄▄▀ ▒█░ ▒█▀▀▀ ░▀▀▀▄▄ #
 #░▀▀█▄ ░▀▄▄▀ ▒█▄▄▄ ▒█░▒█ ▄█▄ ▒█▄▄▄ ▒█▄▄▄█ #
 ###########################################
+
+
