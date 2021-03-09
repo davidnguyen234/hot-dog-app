@@ -1,7 +1,7 @@
 import React from 'react';
 import Map from './Map';
 import Menu from './Menu/Menu';
-import Vendor from './Vendor/VendorNav';
+import Vendor from './vendor/VendorNav';
 import '../css/Nav.css';
 import {
     BrowserRouter as Router,
