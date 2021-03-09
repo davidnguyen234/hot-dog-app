@@ -54,9 +54,9 @@ router.post('/:id', (req, res, next) => {
 
 //Create order
 router.post('/',(req, res, next) => {
-   let mySQLQuery=  `INSERT INTO \`order\` order_id, vendor_id ,cust_id,
-                      order_price, order_date_time, order_status) VALUES
-               (${req.params.order_id},${req.params.vendor_id},${req.params.cust_id},
+   let mySQLQuery=  `INSERT INTO \`order\` order_id, vendor_id ,
+                     order_price, order_date_time, order_status) VALUES
+               (${req.params.order_id},${req.params.vendor_id},
                ${req.params.order_price},${req.params.order_date_time},${req.params.order_status}`;  
   //connection.connect();
   connection.query(mySQLQuery, (error, results) => {
