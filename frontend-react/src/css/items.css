@@ -1,9 +1,7 @@
 .page {
     text-align: center;
-}
-
-.item {
-    display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    min-height: 55vh;
+    display: flex;
 }

@@ -1,7 +1,5 @@
 import React from 'react';
 import OrderListItem from './OrderListItem';
-//import Buttons from './Buttons';
-
 
 function OrdersList(props) {
     // array of order data

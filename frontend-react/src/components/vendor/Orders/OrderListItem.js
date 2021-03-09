@@ -1,9 +1,5 @@
 import React from 'react';
-//import Buttons from './Buttons' ;
-//import OrderMain from'./OrderMain';
-// import Orders from './Orders';
 import '../css/Order.css';
-//import OrdersList from './OrdersList';
 
 class OrderListItem extends React.Component { 
 
@@ -33,4 +29,3 @@ class OrderListItem extends React.Component {
     }   
 }
 export default OrderListItem;
-
