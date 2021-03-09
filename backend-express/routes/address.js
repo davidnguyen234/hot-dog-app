@@ -6,7 +6,7 @@ var db = require('../db');
 router.get('/', function (req, res, next) {
     // Return all Items
     db.query(
-        // 'SELECT address_id, inventory_id, inventory_type, inventory_avail FROM `vendor_has_inventory` JOIN `inventory` USING(inventory_id) ORDER BY vendor_id;',
+        'SELECT * FROM address',
         function (err, results) {
             if (!err) {
                 res.send(results);
@@ -17,11 +17,11 @@ router.get('/', function (req, res, next) {
     );
 });
 
-/* GET(id) Get the address from the given vendor id. */
+/* GET(id) Address from the given vendor id. */
 router.get('/:id', function (req, res, next) {
     // Return Item by id
     db.query(
-        // 'SELECT vendor_id, inventory_id, inventory_type, inventory_avail FROM `vendor_has_inventory` JOIN `inventory` USING(inventory_id) WHERE vendor_id = ' + req.params.id,
+        `SELECT * FROM address WHERE vendor_id = ${req.params.id}`,
         function (err, results) {
             if (!err) {
                 res.send(results);
@@ -33,13 +33,11 @@ router.get('/:id', function (req, res, next) {
 });
 
 
-/* POST(id) edit the address id forthe given venfor id. */
+/* POST(id) edit the address id for the given vendor id. */
 router.put('/:id', function (req, res, next) {
-    const inventoryAvail = req.body.inventory_avail;
-    const inventoryId = req.body.inventory_id;
-    const sqlUpdate =
-        // 'UPDATE `Vendor_has_Inventory` SET inventory_avail = ? WHERE vendor_id = ' + req.params.id + ' && inventory_id = ?';
-    db.query(sqlUpdate, [inventoryAvail, inventoryId],
+    const addressId = req.body.address_id;
+    const sqlUpdate = `UPDATE vendor SET address_id = ? WHERE vendor_id = ${req.params.id}`;
+    db.query(sqlUpdate, [addressId],
         function (err, results) {
             if (!err) {
                 return res.send(results);
