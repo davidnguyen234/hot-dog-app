@@ -21,24 +21,14 @@ CREATE TABLE `Employee` (
   employee_phone VARCHAR(10)  NOT NULL,
   PRIMARY KEY (employee_id));
 
-
 -- -----------------------------------------------------
 -- Table Address
 -- -----------------------------------------------------
 CREATE TABLE `Address` (
- 
   address_longitude FLOAT NOT NULL,
   address_latitude  FLOAT NOT NULL,
-  vendor_id INT NOT NULL,
   address_id INT NOT NULL,
-  PRIMARY KEY (address_id)
--- 	CONSTRAINT FOREIGN KEY (vendor_id)  REFERENCES Vendor (vendor_id)
---     ON DELETE NO ACTION 
---     ON UPDATE NO ACTION
-
-  );
-
-
+  PRIMARY KEY (address_id));
 
 -- -----------------------------------------------------
 -- Table Vendor
@@ -57,7 +47,6 @@ CREATE TABLE `Vendor` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-
 -- -----------------------------------------------------
 -- Table Payment
 -- -----------------------------------------------------
@@ -70,10 +59,7 @@ CREATE TABLE `Payment` (
     INDEX fk_Payment_Vendor_idx (vendor_id ASC) VISIBLE,
   CONSTRAINT fk_Payment_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-);
-
+    ON UPDATE NO ACTION);
 
 -- -----------------------------------------------------
 -- Table Admin
@@ -82,11 +68,10 @@ CREATE TABLE `Admin` (
   admin_id INT NOT NULL,
   employee_id INT NOT NULL,
   PRIMARY KEY (admin_id),
-  INDEX fk_Admin_Employee_idx (employee_id ASC) VISIBLE,
+	INDEX fk_Admin_Employee_idx (employee_id ASC) VISIBLE,
   CONSTRAINT fk_Admin_Employee FOREIGN KEY (employee_id) REFERENCES Employee (employee_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
 
 -- -----------------------------------------------------
 -- Table Inventory
@@ -98,7 +83,6 @@ CREATE TABLE `Inventory` (
   inventory_cost INT NOT NULL,
   PRIMARY KEY (inventory_id));
 
-
 -- -----------------------------------------------------
 -- Table Order
 -- -----------------------------------------------------
@@ -109,13 +93,10 @@ CREATE TABLE `Order` (
   order_date_time DATETIME NOT NULL,
   order_status TINYINT NOT NULL,
   PRIMARY KEY (order_id),
-  INDEX fk_Order_Vendor_idx (vendor_id ASC) VISIBLE,
+	INDEX fk_Order_Vendor_idx (vendor_id ASC) VISIBLE,
   CONSTRAINT fk_Order_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-    );
-
-
+    ON UPDATE NO ACTION);
 
 -- -----------------------------------------------------
 -- Table Vendor_has_Inventory
@@ -125,8 +106,8 @@ CREATE TABLE `Vendor_has_Inventory` (
   inventory_id INT NOT NULL,
   inventory_avail TINYINT NOT NULL,
   PRIMARY KEY (vendor_id, inventory_id),
-  INDEX fk_Vendor_has_Inventory_Inventory_idx (inventory_id ASC) VISIBLE,
-  INDEX fk_Vendor_has_Inventory_Vendor_idx (vendor_id ASC) VISIBLE,
+	INDEX fk_Vendor_has_Inventory_Inventory_idx (inventory_id ASC) VISIBLE,
+	INDEX fk_Vendor_has_Inventory_Vendor_idx (vendor_id ASC) VISIBLE,
   CONSTRAINT fk_Vendor_has_Inventory_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -143,17 +124,14 @@ CREATE TABLE `Vendor_has_Inventory` (
 #     ▒█░▒█ ▒█▄▄█ ░▒█░░ ▒█▄▄█ ▒█▀▀▄ ▒█▄▄█ ░▀▀▀▄▄ ▒█▀▀▀       #
 #     ▒█▄▄▀ ▒█░▒█ ░▒█░░ ▒█░▒█ ▒█▄▄█ ▒█░▒█ ▒█▄▄▄█ ▒█▄▄▄       #
 ##############################################################
-
-
 INSERT INTO `Address`
   VAlUES
-  (47.66999, -122.35084, 101, 1),
-  (47.67900, -122.38495, 102, 2),
-  (47.69183, -122.34100, 103, 3),
-  (47.69391, -122.40091, 104, 4),
-  (47.62590, -122.32045, 105, 5),
-  (47.44621, -122.30076, 106, 6);
-
+  (47.66999, -122.35084, 1),
+  (47.67900, -122.38495, 2),
+  (47.69183, -122.34100, 3),
+  (47.69391, -122.40091, 4),
+  (47.62590, -122.32045, 5),
+  (47.44621, -122.30076, 6);
 
 INSERT INTO `Employee`
   VALUES
@@ -172,7 +150,6 @@ INSERT INTO `Vendor`
   (102, 3, 1),
   (103, 2, 6),
   (104, 4, 5);
-
 
 INSERT INTO `Order`
   VALUES
@@ -212,8 +189,12 @@ INSERT INTO `Vendor_has_Inventory`
   (103, 1, 1),
   (103, 2, 1),
   (103, 3, 1),
-  (103, 4, 1);
-
+  (103, 4, 1),
+  (104, 1, 1),
+  (104, 2, 1),
+  (104, 3, 1),
+  (104, 4, 1);
+    
 ###########################################
 # ▒█▀▀▀█ ░█▀▀█ ▒█▀▄▀█ ▒█▀▀█ ▒█░░░ ▒█▀▀▀   #
 # ░▀▀▀▄▄ ▒█▄▄█ ▒█▒█▒█ ▒█▄▄█ ▒█░░░ ▒█▀▀▀   #
@@ -223,5 +204,3 @@ INSERT INTO `Vendor_has_Inventory`
 #▒█░▒█ ▒█░▒█ ▒█▀▀▀ ▒█▄▄▀ ▒█░ ▒█▀▀▀ ░▀▀▀▄▄ #
 #░▀▀█▄ ░▀▄▄▀ ▒█▄▄▄ ▒█░▒█ ▄█▄ ▒█▄▄▄ ▒█▄▄▄█ #
 ###########################################
-
-
