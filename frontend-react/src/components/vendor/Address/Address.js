@@ -1,26 +1,35 @@
 import React from 'react';
 import AddressDropDown from './AddressDropDown';
-// import Axios from "axios";
+import Axios from "axios";
 
-class Address extends React.Component() {
+class Address extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             addressList: [],
-            vendorId: 101 // defaults on vendor 101
+            vendorId: props.vendorid
+            // ,currentAddress: []
         }
     }
 
     componentDidMount() {
-        this.getItem();
+        this.getAllAddress();
+        this.getSingleAddress();
     }
 
-    // Connects to backend. Adds all the vendor information to the addressList
-    getItem() {
-        Axios.get("http://localhost:9000/address/" + this.state.vendorId).then(res => {
+    // Connects to backend. Adds all the address information to the addressList
+    getAllAddress() {
+        Axios.get("http://localhost:9000/address/").then(res => {
             this.setState({ addressList: [...res.data] })
         });
     }
+    
+    // // Connects to the backend and retreves the location of the given vendor
+    // getVendorAddress(){
+    //     Axios.get("http://localhost:9000/address/" + this.state.vendorId).then(res => {
+    //         this.setState({ currentAddress: res.address_id })
+    //     });
+    // }
 
     // Connects to the backend and updates an existing table
     updateItem(activeAddressId) {
@@ -40,8 +49,10 @@ class Address extends React.Component() {
 
     render() {
         return (
-            <div>
+            <div className="page">
                 <AddressDropDown
+                    currentAddress={this.state.currentAddress}
+                    vendorId={this.state.vendorId}
                     addressList={this.state.addressList}
                     myClickHandler={this.selectAddress.bind(this)}
                 />

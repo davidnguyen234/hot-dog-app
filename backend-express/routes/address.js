@@ -17,11 +17,11 @@ router.get('/', function (req, res, next) {
     );
 });
 
-/* GET(id) Address from the given vendor id. */
+/* GET(id) get all the Addresses from every vendor. */
 router.get('/:id', function (req, res, next) {
     // Return Item by id
     db.query(
-        `SELECT * FROM address WHERE vendor_id = ${req.params.id}`,
+        'SELECT vendor_id, address_id, address_longitude, address_latitude FROM address JOIN vendor USING(address_id)',
         function (err, results) {
             if (!err) {
                 res.send(results);
