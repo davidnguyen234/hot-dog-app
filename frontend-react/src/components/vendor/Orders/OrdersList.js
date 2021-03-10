@@ -6,9 +6,8 @@ function OrdersList(props) {
     const myOrderListItemArray = props.listOfOrders.map((orderLItem) => {
 
         return (
-            <div>
+            <div key={orderLItem.order_id}>
                 < OrderListItem
-                    key={orderLItem.id}
                     order={orderLItem}
                     activeOrderId={props.activeOrderId}
                     myClickHandler={props.myClickHandler}
