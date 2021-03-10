@@ -23,7 +23,7 @@ class Items extends React.Component {
         });
     }
 
-    // Connects to the backend and updates an existing table
+    // Connects to the backend and updates the inventory_avail in the given vendor_has_invnetory table where the given params are found
     updateItem(activeItemId, isAvail) {
         Axios.put("http://localhost:9000/items/" + this.state.vendorid, {
             "inventory_id": activeItemId,
