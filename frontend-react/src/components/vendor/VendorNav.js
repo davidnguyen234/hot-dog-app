@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../css/vendorNav.css';
 import Orders from './Orders/OrderMain';
-import Items from './Items';
+import Items from './Items/Items';
 import Address from './Address/Address';
 import VendorDropDown from './VendorDropDown';
 import {
