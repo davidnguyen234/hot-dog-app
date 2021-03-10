@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../css/items.css';
+import '../../../css/items.css';
 import ItemList from './ItemList';
 import Axios from "axios";
 

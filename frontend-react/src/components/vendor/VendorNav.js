@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../css/vendorNav.css';
 import Orders from './Orders/Orders';
-import Items from './Items';
+import Items from './Items/Items';
 import VendorDropDown from './VendorDropDown';
 import {
     BrowserRouter as Router,
