@@ -33,7 +33,7 @@ router.get('/:id', function (req, res, next) {
 });
 
 
-/* POST(id) edit the item availbility of the given venfor id. */
+/* POST(id) edit the item availbility of the given vendor id. */
 router.put('/:id', function (req, res, next) {
     const inventoryAvail = req.body.inventory_avail;
     const inventoryId = req.body.inventory_id;

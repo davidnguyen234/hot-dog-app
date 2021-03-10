@@ -25,4 +25,19 @@ router.get('/:id', (req, res, next) => {
      }
    })
 });
+
+// UPDATE the address_id in the vendor table with the given vendor_id. */
+router.put('/:id', function (req, res, next) {
+   const addressId = req.body.address_id;
+   const sqlUpdate = `UPDATE vendor SET address_id = ? WHERE vendor_id = ${req.params.id}`;
+   db.query(sqlUpdate, [addressId],
+       function (err, results) {
+           if (!err) {
+               return res.send(results);
+           } else {
+               return console.log(err);
+           }
+       }
+   );
+});
 module.exports = router;

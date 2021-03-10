@@ -8,51 +8,55 @@ class Address extends React.Component {
         this.state = {
             addressList: [],
             vendorId: props.vendorid
-            // ,currentAddress: []
         }
     }
 
     componentDidMount() {
         this.getAllAddress();
-        this.getSingleAddress();
+        this.getCurrentVendorAddressId();
     }
 
-    // Connects to backend. Adds all the address information to the addressList
+    // Connects to backend and adds all the address information of each address to the addressList
     getAllAddress() {
         Axios.get("http://localhost:9000/address/").then(res => {
             this.setState({ addressList: [...res.data] })
         });
     }
     
-    // // Connects to the backend and retreves the location of the given vendor
-    // getVendorAddress(){
-    //     Axios.get("http://localhost:9000/address/" + this.state.vendorId).then(res => {
-    //         this.setState({ currentAddress: res.address_id })
-    //     });
-    // }
+    // Connects to the backend and retreves the address_id of the given vendor
+    getCurrentVendorAddressId(){
+        Axios.get("http://localhost:9000/vendor/" + this.state.vendorId).then(res => {
+            this.setState({ activeAddressId: res.data[0].address_id  })
+        });
+    }
 
-    // Connects to the backend and updates an existing table
-    updateItem(activeAddressId) {
-        Axios.put("http://localhost:9000/address/" + this.state.vendorId, {
+
+    // Connects to the backend and updates the address_id in the vendor table
+    updateAddress(activeAddressId) {
+        Axios.put("http://localhost:9000/vendor/" + this.state.vendorId, {
             "address_id": activeAddressId
         })
             .catch(err => { console.log(err) });
     }
 
-    // grabs the vendor id from the selected Address
-    selectAddress(e, vendorId) {
+    // Grabs the address id from the selected drop down item
+    selectAddress(e, activeAddressId) {
         e.preventDefault();
         this.setState({
-            vendorId
+            activeAddressId
         })
+        console.log(activeAddressId);
+        this.updateAddress(activeAddressId);
     }
 
     render() {
         return (
             <div className="page">
+                <div className="info">
+                    <h4>Hello Vendor: {this.state.vendorId}</h4>
+                    <h3>Your current address is: {this.state.activeAddressId}</h3>
+                </div>
                 <AddressDropDown
-                    currentAddress={this.state.currentAddress}
-                    vendorId={this.state.vendorId}
                     addressList={this.state.addressList}
                     myClickHandler={this.selectAddress.bind(this)}
                 />
