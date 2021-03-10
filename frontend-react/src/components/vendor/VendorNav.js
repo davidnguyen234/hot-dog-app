@@ -1,7 +1,8 @@
 import React from 'react';
 import '../../css/vendorNav.css';
-import Orders from './Orders/Orders';
-import Items from './Items/Items';
+import Orders from './Orders/OrderMain';
+import Items from './Items';
+import Address from './Address/Address';
 import VendorDropDown from './VendorDropDown';
 import {
     BrowserRouter as Router,
@@ -11,6 +12,7 @@ import {
 } from 'react-router-dom';
 
 let itemId = 1; // ID for the item
+let addressId = 1; // ID for the address component
 
 class VendorNav extends React.Component {
     constructor(props) {
@@ -26,9 +28,9 @@ class VendorNav extends React.Component {
         fetch("http://localhost:9000/vendor")
             .then((results) => {
                 return results.json();
-            }).then((items) => {
+            }).then((vendors) => {
                 this.setState({
-                    vendorlist: [...items]
+                    vendorlist: [...vendors]
                 });
             });
     }
@@ -40,6 +42,7 @@ class VendorNav extends React.Component {
             vendorid
         });
         itemId = Math.random(); //Changing the ID of the component forces the it to be remounted (if the url is correct)
+        addressId = Math.random(); 
     }
 
     render() {
@@ -62,6 +65,9 @@ class VendorNav extends React.Component {
                         <Link style={nav_links_style} to="/items">
                             <li>Items</li>
                         </Link>
+                        <Link style={nav_links_style} to="/address">
+                            <li>Address</li>
+                        </Link>
                     </ul>
                 </div>
                 <Switch>
@@ -69,6 +75,11 @@ class VendorNav extends React.Component {
                     <Route
                         path={"/items"}
                         render={(props) => <Items {...props} key={itemId} vendorid={this.state.vendorid} />}
+                        exact
+                    />
+                     <Route
+                        path={"/address"}
+                        render={(props) => <Address {...props} key={addressId} vendorid={this.state.vendorid} />}
                         exact
                     />
                 </Switch>
