@@ -25,8 +25,8 @@ CREATE TABLE `Employee` (
 -- Table Address
 -- -----------------------------------------------------
 CREATE TABLE `Address` (
-  address_longitude FLOAT NOT NULL,
   address_latitude  FLOAT NOT NULL,
+  address_longitude FLOAT NOT NULL,
   address_id INT NOT NULL,
   PRIMARY KEY (address_id));
 
