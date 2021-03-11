@@ -37,6 +37,7 @@ CREATE TABLE `Vendor` (
   vendor_id INT NOT NULL,
   employee_id INT NOT NULL,
   address_id INT NOT NULL,
+  vendor_avail TINYINT NOT NULL,
   PRIMARY KEY (vendor_id),
   INDEX fk_Vendor_Employee_idx (employee_id ASC) VISIBLE,
   INDEX fk_Vendor_Address_idx (address_id ASC) VISIBLE,
@@ -146,10 +147,10 @@ INSERT INTO `Admin`
 
 INSERT INTO `Vendor`
   VALUES
-  (101, 1, 2), ## Caprice Gregoratti at address #2
-  (102, 3, 1),
-  (103, 2, 6),
-  (104, 4, 5);
+  (101, 1, 2, 1), ## Caprice Gregoratti at address #2
+  (102, 3, 1, 0, 
+  (103, 2, 6, 1), ## 0 == (vendor is closed) 1 == (true vendor is open)
+  (104, 4, 5, 1);
 
 INSERT INTO `Order`
   VALUES

@@ -85,7 +85,7 @@ export class MapContainer extends Component {
          onClose={this.onInfoWindowClose}
         >
             <div id="info">
-              <h3>{this.state.selectedCart.vendor_id}</h3>
+              <h3 id="vendorH3">{this.state.selectedCart.vendor_id}</h3>
               {/* <p>{this.state.selectedCart.cart_phone}</p>
               <p>{this.state.selectedCart.cart_address}</p> */}
               <button>Menu</button>
