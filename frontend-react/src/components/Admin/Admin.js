@@ -1,6 +1,9 @@
 import React from 'react';
 import Axios from 'axios';
-import Popup from 'reactjs-popup';
+import AdminListItem from './AdminListItem';
+import AdminListVendor from './AdminListVendor';
+import AdminListOrders from './AdminListOrders';
+import AdminListAddress from './AdminListAddress';
 
 class Admin extends React.Component {
     constructor(props) {
@@ -9,7 +12,14 @@ class Admin extends React.Component {
             itemList: [],
             vendorList: [],
             ordersList: [],
-            addressList: []
+            addressList: [],
+            listStyle: {
+                display: 'flex',
+                width: '100px',
+                border: '1px #AAA solid',
+                padding: '10px',
+                backgroundColor: '#FFFFFF' // WHITE
+            }
         }
     }
 
@@ -41,73 +51,28 @@ class Admin extends React.Component {
         });
     }
 
+
+
     render() {
         return (
             <div className="adminPage">
 
-                <div id="inventoryList">
-                    Inventory:
-                    {this.state.itemList.map(item => (
-                    <Popup
-                        trigger={<div id="InventoryItem"> {item.inventory_type} </div>}
-                        on="hover"
-                        mouseLeaveDelay={300}
-                        mouseEnterDelay={300}
-                    >
-                        <div id="inventoryOptions">
-                            Options: [Edit] [Delete]
-                        </div>
-                    </Popup>
-                ))}
-                </div>
-
-                <div id="ordersList">
-                    Orders:
-                    {this.state.ordersList.map(order => (
-                    <Popup
-                        trigger={<div id="orderItem"> {order.orders_id} </div>}
-                        on="hover"
-                        mouseLeaveDelay={300}
-                        mouseEnterDelay={300}
-                    >
-                        <div id="orderOptions">
-                            Options: [Edit] [Delete]
-                        </div>
-                    </Popup>
-                ))}
-                </div>
-
-                <div id="vendorList">
-                    Vendors:
-                    {this.state.vendorList.map(vendor => (
-                    <Popup
-                        trigger={<div id="orderItem"> {vendor.vendor_id} </div>}
-                        on="hover"
-                        mouseLeaveDelay={300}
-                        mouseEnterDelay={300}
-                    >
-                        <div id="orderOptions">
-                            Options: [Edit] [Delete]
-                        </div>
-                    </Popup>
-                ))}
-                </div>
-
-                <div id="addressList">
-                    Addresses:
-                    {this.state.addressList.map(address => (
-                    <Popup
-                        trigger={<div id="orderItem"> {address.address_id} </div>}
-                        on="hover"
-                        mouseLeaveDelay={300}
-                        mouseEnterDelay={300}
-                    >
-                        <div id="orderOptions">
-                            Options: Not avalible
-                        </div>
-                    </Popup>
-                ))}
-                </div>
+                <AdminListItem
+                    list={this.state.itemList}
+                    style={this.state.listStyle}
+                />
+                <AdminListVendor
+                    list={this.state.vendorList}
+                    style={this.state.listStyle}
+                />
+                <AdminListOrders
+                    list={this.state.ordersList}
+                    style={this.state.listStyle}
+                />
+                <AdminListAddress
+                    list={this.state.addressList}
+                    style={this.state.listStyle}
+                />
             </div>
         );
     }
