@@ -40,4 +40,16 @@ router.put('/:id', function (req, res, next) {
        }
    );
 });
+
+// UPDATE the vendor_avail in the vendor table with the given vendor_id. */
+router.put('/:id/:avail', function (req, res, next) {
+    let sqlUpdate = `UPDATE vendor SET vendor_avail = ${req.params.avail} WHERE vendor_id = ${req.params.id}`;
+    db.query(sqlUpdate, (err, results) => {
+        if (!err) {
+           res.send(results);
+       } else {
+           console.log(err);
+       }
+     })
+ });
 module.exports = router;

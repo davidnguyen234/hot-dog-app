@@ -1,6 +1,8 @@
 import React from 'react';
 import AddressDropDown from './AddressDropDown';
+import Toggle from './Toggle';
 import Axios from "axios";
+
 
 class Address extends React.Component {
     constructor(props) {
@@ -22,11 +24,12 @@ class Address extends React.Component {
             this.setState({ addressList: [...res.data] })
         });
     }
-    
+
     // Connects to the backend and retreves the address_id of the given vendor
-    getCurrentVendorAddressId(){
+    // also get if the vendor is on available
+    getCurrentVendorAddressId() {
         Axios.get("http://localhost:9000/vendor/" + this.state.vendorId).then(res => {
-            this.setState({ activeAddressId: res.data[0].address_id  })
+            this.setState({ activeAddressId: res.data[0].address_id, vendorAvail: res.data[0].vendor_avail })
         });
     }
 
@@ -39,14 +42,45 @@ class Address extends React.Component {
             .catch(err => { console.log(err) });
     }
 
+    // Connects to the back end and updates the vendor_avail in the vendor table
+    updateAvail(isAvail) {
+        Axios.put("http://localhost:9000/vendor/" + this.state.vendorId + "/" + isAvail)
+            .catch(err => { console.log(err) });
+    }
+
+    // EVENTHANDLERS
     // Grabs the address id from the selected drop down item
     selectAddress(e, activeAddressId) {
         e.preventDefault();
         this.setState({
             activeAddressId
         })
-        console.log(activeAddressId);
         this.updateAddress(activeAddressId);
+    }
+
+    // Eventhandler to toggle the vendor open or close
+    async toggleAvil(e) {
+        e.preventDefault();
+        let isAvail;
+        // toggle the avalibility
+        if (this.state.vendorAvail === 1) {
+            isAvail = 0;
+        } else {
+            isAvail = 1;
+        }
+        this.updateAvail(isAvail);
+        await this.wait(); // Use to make sure the PUT finished before the new GET happens
+        this.getAllAddress();
+        this.getCurrentVendorAddressId();
+    }
+
+    // Function to enure promise order is correct (PUT before GET)
+    wait() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve('resolved');
+            }, 1000);
+        });
     }
 
     render() {
@@ -59,6 +93,10 @@ class Address extends React.Component {
                 <AddressDropDown
                     addressList={this.state.addressList}
                     myClickHandler={this.selectAddress.bind(this)}
+                />
+                <Toggle
+                    vendorAvail={this.state.vendorAvail}
+                    myClickHandler={this.toggleAvil.bind(this)}
                 />
             </div>
         );
