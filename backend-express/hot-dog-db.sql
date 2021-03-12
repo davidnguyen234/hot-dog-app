@@ -148,7 +148,7 @@ INSERT INTO `Admin`
 INSERT INTO `Vendor`
   VALUES
   (101, 1, 2, 1), ## Caprice Gregoratti at address #2
-  (102, 3, 1, 0, 
+  (102, 3, 1, 0), 
   (103, 2, 6, 1), ## 0 == (vendor is closed) 1 == (true vendor is open)
   (104, 4, 5, 1);
 
