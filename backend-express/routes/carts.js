@@ -8,7 +8,8 @@ const connection = mysql.createConnection(credentials);
 
 //get all carts
 router.get('/', function(req, res, next) {
-    let query = `SELECT * FROM Cart`;
+  // let query = `SELECT * FROM Address`;
+  let query = `SELECT * FROM Address JOIN Vendor USING(address_id)`;
   
       connection.query(query, (err, results) => {
         if (err) {
