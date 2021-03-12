@@ -20,9 +20,10 @@ const indexRouter = require('./routes/index');
 const cartsRouter = require('./routes/carts')
 const vendorRouter = require('./routes/vendor');
 const orderRouter = require('./routes/order');
-let itemsRouter = require('./routes/items');
+const itemsRouter = require('./routes/items');
 const menuRouter = require('./routes/menu');
 const addressRouter = require('./routes/address');
+const adminRouter = require('./routes/admin');
 
 // CALLING THE ROUTES
 app.use('/', indexRouter);
@@ -32,6 +33,7 @@ app.use('/vendor', vendorRouter);
 app.use('/order', orderRouter);
 app.use('/menu', menuRouter);
 app.use('/address', addressRouter);
+app.use('/admin',adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -48,5 +50,4 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.json('error');
 });
-
 module.exports = app;
