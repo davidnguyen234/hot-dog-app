@@ -87,7 +87,7 @@ CREATE TABLE `Inventory` (
 -- -----------------------------------------------------
 -- Table Order
 -- -----------------------------------------------------
-CREATE TABLE `Order` (
+CREATE TABLE `Orders` (
   order_id INT NOT NULL,
   vendor_id INT NOT NULL,
   order_price VARCHAR(45) NOT NULL,
@@ -152,7 +152,7 @@ INSERT INTO `Vendor`
   (103, 2, 6, 1), ## 0 == (vendor is closed) 1 == (true vendor is open)
   (104, 4, 5, 1);
 
-INSERT INTO `Order`
+INSERT INTO `Orders`
   VALUES
   (001, 101, 14.98, '2021-02-20 09:58:17', 0),
   (002, 103, 7.99, '2021-02-20 10:26:09', 0),
