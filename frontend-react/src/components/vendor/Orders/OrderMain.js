@@ -68,7 +68,7 @@ class OrderMain extends React.Component {
         price={this.state.activeOrder.order_price}
         date={this.state.activeOrder.order_date_time}
       />
-      : <h4>Select an Order</h4>
+      : <h2>Select an Order to see the details if there is any Order</h2>
 
 
     return (

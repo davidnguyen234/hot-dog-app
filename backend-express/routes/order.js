@@ -7,8 +7,8 @@ const connection = mysql.createConnection(myCredentials);
 
 ///Returns all the data in this route//
 router.get('/',(req, res, next) => {
-   let mySQLQuery=  'SELECT * FROM `Order`';
-
+   let mySQLQuery=  'SELECT * FROM `Orders` WHERE order_status = 0';
+ 
   //connection.connect();
   setTimeout(() => {
    connection.query(mySQLQuery, (error, results) => {
@@ -25,7 +25,7 @@ router.get('/',(req, res, next) => {
 
 // Returns /value"
 router.get('/:id',(req, res, next) => {
-   let mySQLQuery=  'SELECT * FROM `order` WHERE order_id ='+ req.params.id;
+   let mySQLQuery=  'SELECT * FROM `orders` WHERE order_id ='+ req.params.id;
 
   //connection.connect();
   connection.query(mySQLQuery, (error, results) => {
@@ -41,7 +41,7 @@ router.get('/:id',(req, res, next) => {
 
 //update order status
 router.post('/:id', (req, res, next) => {
-   let mySQLQuery = `UPDATE \`order\` SET  order_status = 1 WHERE order_id = ${req.params.id}`;
+   let mySQLQuery = `UPDATE \`orders\` SET  order_status = 1 WHERE order_id = ${req.params.id}`;
    connection.query(mySQLQuery, (error, results) => {
       if(error) {
          res.sendStatus(error);  
@@ -54,7 +54,7 @@ router.post('/:id', (req, res, next) => {
 
 //Create order
 router.post('/',(req, res, next) => {
-   let mySQLQuery=  `INSERT INTO \`order\` order_id, vendor_id ,
+   let mySQLQuery=  `INSERT INTO \`orders\` order_id, vendor_id ,
                      order_price, order_date_time, order_status) VALUES
                (${req.params.order_id},${req.params.vendor_id},
                ${req.params.order_price},${req.params.order_date_time},${req.params.order_status}`;  
