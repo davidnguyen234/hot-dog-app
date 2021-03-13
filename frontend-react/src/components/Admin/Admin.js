@@ -14,11 +14,17 @@ class Admin extends React.Component {
             ordersList: [],
             addressList: [],
             listStyle: {
-                display: 'flex',
-                width: '100px',
+                marginRight: '40px',
+                width: '140px',
                 border: '1px #AAA solid',
                 padding: '10px',
                 backgroundColor: '#FFFFFF' // WHITE
+            },
+            pageStyle: {
+                display: 'flex',
+                justifyContent: 'center',
+                padding: '50px'
+
             }
         }
     }
@@ -55,7 +61,7 @@ class Admin extends React.Component {
 
     render() {
         return (
-            <div className="adminPage">
+            <div className="adminPage" style={this.state.pageStyle}>
 
                 <AdminListItem
                     list={this.state.itemList}

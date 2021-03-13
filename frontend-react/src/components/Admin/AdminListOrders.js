@@ -10,14 +10,21 @@ class AdminListOrders extends React.Component {
                 {this.props.list.map(order => (
                     <Popup
                         key={order.orders_id}
-                        trigger={<div id="orderItem" style={this.props.style}> {order.orders_id} </div>}
+                        trigger={
+                            <div id="orderItem" style={this.props.style}>
+                                Order Id: {order.orders_id}
+                                <br/>
+                                Vendor Id: {order.vendor_id}
+
+                            </div>}
                         position="right top"
                         on="hover"
                         mouseLeaveDelay={300}
                         mouseEnterDelay={300}
                     >
                         <div id="inventoryOptions" style={this.props.style}>
-                            [Edit] [Delete]
+                            <button>Edit</button>
+                            <button>Delete</button>
                         </div>
                     </Popup>
                 ))}

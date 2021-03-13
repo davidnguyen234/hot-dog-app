@@ -7,20 +7,30 @@ class AdminListItem extends React.Component {
         return (
             <div id="inventoryList">
                 Inventory:
-                {this.props.list.map(item => (
-                    <Popup
-                        key={item.inventory_id}
-                        trigger={<div id="InventoryItem" style={this.props.style}> {item.inventory_type} </div>}
-                        position="right top"
-                        on="hover"
-                        mouseLeaveDelay={300}
-                        mouseEnterDelay={300}
-                    >
-                        <div id="inventoryOptions" style={this.props.style}>
-                            [Edit] [Delete]
-                        </div>
-                    </Popup>
-                ))}
+                <div>
+                    {this.props.list.map(item => (
+                        <Popup
+                            key={item.inventory_id}
+                            trigger={
+                                <div id="InventoryItem" style={this.props.style}>
+                                    Name: {item.inventory_type} 
+                                    <br/>
+                                    Price: {item.inventory_price}
+                                    <br/>
+                                    Cost: {item.inventory_cost}
+                                </div>}
+                            position="right top"
+                            on="hover"
+                            mouseLeaveDelay={300}
+                            mouseEnterDelay={300}
+                        >
+                            <div id="inventoryOptions" style={this.props.style}>
+                                <button>Edit</button>
+                                <button>Delete</button>
+                            </div>
+                        </Popup>
+                    ))}
+                </div>
             </div>
         );
     }
