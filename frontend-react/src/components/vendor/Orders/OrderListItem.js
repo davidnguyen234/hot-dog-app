@@ -5,7 +5,7 @@ class OrderListItem extends React.Component {
 
     render() {
         const style = {
-            border: '1px #ffc72c solid',
+            // border: '1px #ffc72c solid',
             color: '#554'
         }
         if (this.props.activeOrderId && this.props.activeOrderId === this.props.order.order_id) {
