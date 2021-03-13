@@ -85,17 +85,17 @@ CREATE TABLE `Inventory` (
   PRIMARY KEY (inventory_id));
 
 -- -----------------------------------------------------
--- Table Order
+-- Table Orders
 -- -----------------------------------------------------
-CREATE TABLE `Order` (
-  order_id INT NOT NULL,
+CREATE TABLE `Orders` (
+  orders_id INT NOT NULL,
   vendor_id INT NOT NULL,
-  order_price VARCHAR(45) NOT NULL,
-  order_date_time DATETIME NOT NULL,
-  order_status TINYINT NOT NULL,
-  PRIMARY KEY (order_id),
-	INDEX fk_Order_Vendor_idx (vendor_id ASC) VISIBLE,
-  CONSTRAINT fk_Order_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
+  orders_price VARCHAR(45) NOT NULL,
+  orders_date_time DATETIME NOT NULL,
+  orders_status TINYINT NOT NULL,
+  PRIMARY KEY (orders_id),
+	INDEX fk_Orders_Vendor_idx (vendor_id ASC) VISIBLE,
+  CONSTRAINT fk_Orders_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -152,7 +152,7 @@ INSERT INTO `Vendor`
   (103, 2, 6, 1), ## 0 == (vendor is closed) 1 == (true vendor is open)
   (104, 4, 5, 1);
 
-INSERT INTO `Order`
+INSERT INTO `Orders`
   VALUES
   (001, 101, 14.98, '2021-02-20 09:58:17', 0),
   (002, 103, 7.99, '2021-02-20 10:26:09', 0),
