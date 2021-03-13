@@ -85,17 +85,17 @@ CREATE TABLE `Inventory` (
   PRIMARY KEY (inventory_id));
 
 -- -----------------------------------------------------
--- Table Order
+-- Table Orders
 -- -----------------------------------------------------
 CREATE TABLE `Orders` (
-  order_id INT NOT NULL,
+  orders_id INT NOT NULL,
   vendor_id INT NOT NULL,
-  order_price VARCHAR(45) NOT NULL,
-  order_date_time DATETIME NOT NULL,
-  order_status TINYINT NOT NULL,
-  PRIMARY KEY (order_id),
-	INDEX fk_Order_Vendor_idx (vendor_id ASC) VISIBLE,
-  CONSTRAINT fk_Order_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
+  orders_price VARCHAR(45) NOT NULL,
+  orders_date_time DATETIME NOT NULL,
+  orders_status TINYINT NOT NULL,
+  PRIMARY KEY (orders_id),
+	INDEX fk_Orders_Vendor_idx (vendor_id ASC) VISIBLE,
+  CONSTRAINT fk_Orders_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 

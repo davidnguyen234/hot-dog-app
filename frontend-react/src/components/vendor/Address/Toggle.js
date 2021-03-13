@@ -9,7 +9,7 @@ class Toggle extends React.Component {
             width: '340px',
             border: '1px #AAA solid',
             padding: '10px',
-            backgroundColor: '#000000' // RED
+            backgroundColor: '#000000' // BLACK
         }
 
         if (this.props.vendorAvail === 1) {
