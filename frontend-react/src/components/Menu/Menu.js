@@ -11,22 +11,14 @@ class Menu extends React.Component {
             menuItems: [],
             vendorid: props.vendorid,
             checked: false,
-            orderprice: props.orderprice,
+            orderprice: 0,
             total: 0
         };
 
         this.handleClick = this.handleClick.bind(this);
     }
 
-    //CLICK HANDLER
-    handleClick() {
-        // this.setState(state => ({
 
-        // }));
-        this.setState({ total: this.state.menuItems.inventory_price })
-        console.log(this.state.orderprice);
-        console.log("click working");
-    }
 
     componentDidMount() {
         this.getItems();
@@ -38,6 +30,21 @@ class Menu extends React.Component {
             this.setState({ menuItems: [...res.data] });
         });
     }
+
+
+    //CLICK HANDLER
+    handleClick() {
+
+        // this.setState(state => ({
+
+        // }));
+        // this.setState({ total: this.state.menuItems.inventory_price })
+        // console.log(this.state.orderprice);
+        this.setState({ total: this.state.total + parseFloat(this.state.menuItems.inventory_price) })
+        console.log("click working...");
+
+    }
+
 
     render() {
         return (
