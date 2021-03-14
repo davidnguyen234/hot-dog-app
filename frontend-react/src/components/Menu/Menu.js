@@ -1,61 +1,68 @@
 import React from 'react';
-import Popup from 'reactjs-popup';
 import Button from './Button';
+import Axios from "axios";
 import './menu.css';
-
-//CLICK HANDLER
-const handleClick = (e) => {
-    e.preventDefault();
-    console.log('This: ', e.target.textContent, 'was clicked!');
-}
-
 class Menu extends React.Component {
+
     constructor(props) {
         super(props);
 
         this.state = {
-            menuItems: []
-        }
+            menuItems: [],
+            vendorid: props.vendorid,
+            checked: false,
+            orderprice: props.orderprice,
+            total: 0
+        };
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    //CLICK HANDLER
+    handleClick() {
+        // this.setState(state => ({
+
+        // }));
+        this.setState({ total: this.state.menuItems.inventory_price })
+        console.log(this.state.orderprice);
+        console.log("click working");
     }
 
     componentDidMount() {
-        fetch("http://localhost:9000/menu")
-            .then((results) => {
-                return results.json();
-            }).then((items) => {
-                this.setState({
-                    menuItems: [...items]
-                });
-            });
+        this.getItems();
+
+    }
+
+    getItems() {
+        Axios.get("http://localhost:9000/menu").then(res => {
+            this.setState({ menuItems: [...res.data] });
+        });
     }
 
     render() {
         return (
             <div className="menu">
-                <Popup
-                    trigger={<div className="menu-item"> HotDog Menu </div>}
-                    position="right top"
-                    on="hover"
-                    closeOnDocumentClick
-                    mouseLeaveDelay={300}
-                    mouseEnterDelay={0}
-                    contentStyle={{ padding: '0px', border: 'none' }}
-                    arrow={false}
-                >
+                <ul className="list-group">
+                    {this.state.menuItems.map(menuItem => (
+                        <li key={menuItem.vendor_id} className="menu-item" onClick={this.handleClick}>
+                            {/* <input
+                                type="checkbox"
+                                defaultChecked={this.state.checked}
+                                onClick={console.log(this.target)}
+                            ></input> */}
 
-                    <div className="menu" onClick={handleClick}>
+                            {menuItem.inventory_type + " $" + menuItem.inventory_price}
 
-                        <ul className="list-group">
-                            {this.state.menuItems.map(menuItem => (
-                                <li key={menuItem.inventory_id} className="menu-item" text={menuItem.title}>
-                                    {menuItem.inventory_type}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </Popup>
+                        </li>
+                    ))}
+
+                </ul>
+                <h1 className="Total">Total: {this.state.total} </h1>
+
                 <Button />
-            </div>
+
+
+            </div >
         )
     }
 };
