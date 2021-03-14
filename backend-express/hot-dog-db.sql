@@ -79,7 +79,7 @@ CREATE TABLE `Admin` (
 CREATE TABLE `Inventory` (
   inventory_id INT NOT NULL,
   inventory_type VARCHAR(45) NOT NULL,
-  inventory_price INT NOT NULL,
+  inventory_price DOUBLE NOT NULL,
   inventory_cost INT NOT NULL,
   PRIMARY KEY (inventory_id));
 
