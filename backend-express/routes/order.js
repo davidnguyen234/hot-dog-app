@@ -48,8 +48,8 @@ router.post('/:id', (req, res, next) => {
 router.post('/', (req, res, next) => {
    let mySQLQuery = `INSERT INTO \`orders\` orders_id, vendor_id ,
                      orders_price, orders_date_time, orders_status) VALUES
-               (${req.params.order_id},${req.params.vendor_id},
-               ${req.params.order_price},${req.params.order_date_time},${req.params.order_status}`;
+               (${req.params.orders_id},${req.params.vendor_id},
+               ${req.params.orders_price},${req.params.orders_date_time},${req.params.orders_status}`;
    db.query(mySQLQuery, (error, results) => {
       if (error) {
          res.sendStatus(500);
