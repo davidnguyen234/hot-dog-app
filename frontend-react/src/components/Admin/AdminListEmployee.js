@@ -1,22 +1,21 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
 
-class AdminListAddress extends React.Component {
+class AdminListEmployee extends React.Component {
 
     render() {
         return (
-            <div id="addressList">
-                Address:
-                {this.props.list.map(address => (
+            <div id="EmployeeList">
+                Employee:
+                {this.props.list.map(emp => (
                     <Popup
-                        key={address.address_id}
+                        key={emp.orders_id}
                         trigger={
-                            <div id="orderItem" style={this.props.style}>
-                                Address Id: {address.address_id}
+                            <div id="Employee" style={this.props.style}>
+                                Id: {emp.employee_id}
                                 <br/>
-                                Longitude: {address.address_longitude}
-                                <br/>
-                                Latitude: {address.address_latitude}
+                                Name: {emp.employee_first_name} {emp.employee_last_name} 
+
                             </div>}
                         position="right top"
                         on="hover"
@@ -24,7 +23,8 @@ class AdminListAddress extends React.Component {
                         mouseEnterDelay={300}
                     >
                         <div id="inventoryOptions" style={this.props.style}>
-                            No options
+                            <button>Edit</button>
+                            <button>Delete</button>
                         </div>
                     </Popup>
                 ))}
@@ -32,4 +32,4 @@ class AdminListAddress extends React.Component {
         );
     }
 }
-export default AdminListAddress;
+export default AdminListEmployee;

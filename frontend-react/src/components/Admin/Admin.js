@@ -3,7 +3,7 @@ import Axios from 'axios';
 import AdminListItem from './AdminListItem';
 import AdminListVendor from './AdminListVendor';
 import AdminListOrders from './AdminListOrders';
-import AdminListAddress from './AdminListAddress';
+import AdminListEmployee from './AdminListEmployee';
 
 class Admin extends React.Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class Admin extends React.Component {
             itemList: [],
             vendorList: [],
             ordersList: [],
-            addressList: [],
+            employeeList: [],
             listStyle: {
                 marginRight: '40px',
                 width: '160px',
@@ -33,7 +33,7 @@ class Admin extends React.Component {
         this.getTable("inventory");
         this.getTable("vendor");
         this.getTable("orders");
-        this.getTable("address");
+        this.getTable("employee");
     }
 
     // GET CALLS //
@@ -51,7 +51,7 @@ class Admin extends React.Component {
                     this.setState({ vendorList: [...res.data] })
                     break;
                 default:
-                    this.setState({ addressList: [...res.data] })
+                    this.setState({ employeeList: [...res.data] })
                     break;
             }
         });
@@ -78,6 +78,7 @@ class Admin extends React.Component {
                 />
                 <AdminListVendor
                     list={this.state.vendorList}
+                    listEmp={this.state.employeeList}
                     style={this.state.listStyle}
                     myClickHandler={this.addVendor.bind(this)}
                 />
@@ -85,8 +86,8 @@ class Admin extends React.Component {
                     list={this.state.ordersList}
                     style={this.state.listStyle}
                 />
-                <AdminListAddress
-                    list={this.state.addressList}
+                <AdminListEmployee
+                    list={this.state.employeeList}
                     style={this.state.listStyle}
                 />
             </div>
