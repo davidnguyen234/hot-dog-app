@@ -12,7 +12,8 @@ class Menu extends React.Component {
             vendorid: props.vendorid,
             checked: false,
             orderprice: 0,
-            total: 0
+            total: 0.0,
+            quantity: 0
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -48,19 +49,28 @@ class Menu extends React.Component {
 
     render() {
         return (
+
             <div className="menu">
                 <ul className="list-group">
                     {this.state.menuItems.map(menuItem => (
-                        <li key={menuItem.vendor_id} className="menu-item" onClick={this.handleClick}>
-                            {/* <input
+                        <>
+                            <div className="quantity-buttons">
+                                <button className="increment">+</button>
+                                <h1>{this.state.quantity}</h1>
+                                <button className="decrement">-</button>
+                            </div>
+                            <li key={this.state.vendorid} className="menu-item" onClick={this.handleClick}>
+                                {/* <input
                                 type="checkbox"
                                 defaultChecked={this.state.checked}
-                                onClick={console.log(this.target)}
+                                onClick={console.log("clicked check")}
                             ></input> */}
 
-                            {menuItem.inventory_type + " $" + menuItem.inventory_price}
+                                {menuItem.inventory_type + " $" + menuItem.inventory_price}
+                                {/* {this.state.menuItem.inventory_id} */}
 
-                        </li>
+                            </li>
+                        </>
                     ))}
 
                 </ul>

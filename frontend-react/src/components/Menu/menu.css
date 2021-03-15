@@ -18,6 +18,7 @@
 }
 
 .menu-item {
+  list-style: none;
   text-align: center;
   background: var(--mcYellow);
   border-radius: 20px;
@@ -29,4 +30,8 @@
 }
 .menu-item:hover {
   color: var(--mcRed);
+}
+
+.quantity-buttons {
+  align-self: flex-start;
 }
