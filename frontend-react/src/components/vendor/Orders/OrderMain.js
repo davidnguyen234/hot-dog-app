@@ -28,7 +28,7 @@ class OrderMain extends React.Component {
   deleteHandler(e, activeOrderId) {
     e.preventDefault();
     const newOrderList = this.state.ordersli.filter((order) => {
-      return order.order_id !== activeOrderId;
+      return order.orders_id !== activeOrderId;
     });
     this.setState({
       ordersli: newOrderList
@@ -45,7 +45,7 @@ class OrderMain extends React.Component {
   selectActiveOrder(e, activeOrderId) {
     e.preventDefault();
     console.log(activeOrderId);
-    let activeOrder = this.state.ordersli.find((o) => o.order_id === activeOrderId);
+    let activeOrder = this.state.ordersli.find((o) => o.orders_id === activeOrderId);
     this.setState({
       activeOrderId,
       activeOrder
@@ -65,8 +65,8 @@ class OrderMain extends React.Component {
 
     let myOrderDetails = this.state.activeOrderId
       ? <OrderDetails
-        price={this.state.activeOrder.order_price}
-        date={this.state.activeOrder.order_date_time}
+        price={this.state.activeOrder.orders_price}
+        date={this.state.activeOrder.orders_date_time}
       />
       : <h2>Select an Order to see the details if there is any Order</h2>
 
