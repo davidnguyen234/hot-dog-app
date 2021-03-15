@@ -25,9 +25,14 @@ CREATE TABLE `Employee` (
 -- Table Address
 -- -----------------------------------------------------
 CREATE TABLE `Address` (
+  address_id INT NOT NULL,
+  address_name VARCHAR(45) NOT NULL,
+  address_cross_street VARCHAR(45) NOT NULL,
+  address_city VARCHAR(45) NOT NULL,
+  address_state VARCHAR(2) NOT NULL,
+  address_zip INT NOT NULL,
   address_latitude  FLOAT NOT NULL,
   address_longitude FLOAT NOT NULL,
-  address_id INT NOT NULL,
   PRIMARY KEY (address_id));
 
 -- -----------------------------------------------------
@@ -35,6 +40,8 @@ CREATE TABLE `Address` (
 -- -----------------------------------------------------
 CREATE TABLE `Vendor` (
   vendor_id INT NOT NULL,
+  vendor_phone VARCHAR(45) NOT NULL,
+  vendor_hours VARCHAR(45) NOT NULL,
   employee_id INT NOT NULL,
   address_id INT NOT NULL,
   vendor_avail TINYINT NOT NULL,
@@ -127,12 +134,12 @@ CREATE TABLE `Vendor_has_Inventory` (
 ##############################################################
 INSERT INTO `Address`
   VAlUES
-  (47.66999, -122.35084, 1),
-  (47.67900, -122.38495, 2),
-  (47.69183, -122.34100, 3),
-  (47.69391, -122.40091, 4),
-  (47.62590, -122.32045, 5),
-  (47.44621, -122.30076, 6);
+  (1, 'Capitol Hill' , 'Harvard Ave E & E Roy St' , 'Seattle' , 'WA' , 98102 , 47.6253 , -122.3222),
+  (2, 'Ballard' , 'Jones Ave NW & NW 70th St' , 'Seattle' , 'WA' , 98117 , 47.6792 , -122.3860),
+  (3, 'Belltown' , '3rd Ave & Bell St' , 'Seattle' , 'WA' , 98121 , 47.6147 , -122.3448),
+  (4, 'Fremont' , 'Fremont Ave N & N 39th St' , 'Seattle' , 'WA' , 98103 , 47.6542 , -122.3500),
+  (5, 'Sodo' , '1st Ave S & S Stacy St' , 'Seattle' , 'WA' , 98134 , 47.5830 , -122.3348),
+  (6, 'Queen Anne' , 'Queen Anne Ave N & W Galer St' , 'Seattle' , 'WA' , 98109 , 47.6323 , -122.3569);
 
 INSERT INTO `Employee`
   VALUES
@@ -147,10 +154,10 @@ INSERT INTO `Admin`
 
 INSERT INTO `Vendor`
   VALUES
-  (101, 1, 2, 1), ## Caprice Gregoratti at address #2
-  (102, 3, 1, 0), 
-  (103, 2, 6, 1), ## 0 == (vendor is closed) 1 == (true vendor is open)
-  (104, 4, 5, 1);
+  (101, '(206) 485 - 1575', '12:00 PM - 8:00 PM', 1, 2, 1), ## Caprice Gregoratti at address #2
+  (102, '(206) 428 - 5727', '12:00 PM - 8:00 PM', 3, 1, 0), 
+  (103, '(206) 548 - 7586', '12:00 PM - 8:00 PM', 2, 6, 1), ## 0 == (vendor is closed) 1 == (true vendor is open)
+  (104, '(206) 358 - 4581', '12:00 PM - 8:00 PM', 4, 5, 1);
 
 INSERT INTO `Orders`
   VALUES

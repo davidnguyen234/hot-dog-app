@@ -46,8 +46,12 @@ export class MapContainer extends Component {
               lng: cartLocations.address_longitude
             }}
             vendor_id={cartLocations.vendor_id}
-          // cart_phone={cartLocations.cart_phone}
-          // cart_address={cartLocations.cart_address}
+            vendor_hours={cartLocations.vendor_hours}
+            vendor_phone={cartLocations.vendor_phone}
+            address_cross_street={cartLocations.address_cross_street}
+            address_city={cartLocations.address_city}
+            address_state={cartLocations.address_state}
+            address_zip={cartLocations.address_zip}
           //icon={icon}
           />
       }
@@ -93,10 +97,12 @@ render() {
         onClose={this.onInfoWindowClose}
       >
         <div id="info">
-          <h3 id="vendorH3">{this.state.selectedCart.vendor_id}</h3>
-          {/* <p>{this.state.selectedCart.cart_phone}</p>
-              <p>{this.state.selectedCart.cart_address}</p> */}
-          <button>Menu</button>
+          <h3> Cart {this.state.selectedCart.vendor_id}</h3> <br></br>
+          <p>{this.state.selectedCart.vendor_hours}</p>
+          <p>{this.state.selectedCart.vendor_phone}</p> <br></br>
+          <p>{this.state.selectedCart.address_cross_street}</p>
+          <p>{this.state.selectedCart.address_city}, {this.state.selectedCart.address_state} {this.state.selectedCart.address_zip}</p> <br></br>
+          <div id="menu-button"><button>Menu</button></div>
         </div>
       </InfoWindow>
     </Map>
