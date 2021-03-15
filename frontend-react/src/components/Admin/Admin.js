@@ -15,7 +15,7 @@ class Admin extends React.Component {
             addressList: [],
             listStyle: {
                 marginRight: '40px',
-                width: '140px',
+                width: '160px',
                 border: '1px #AAA solid',
                 padding: '10px',
                 backgroundColor: '#FFFFFF' // WHITE
@@ -57,7 +57,16 @@ class Admin extends React.Component {
         });
     }
 
-
+    // PUT CALLS //
+    // adds a new vendor to the database with the given employee_id and vendor_phone
+    addVendor(e, vendorPhone, vendorEmployeeId){
+        e.preventDefault();
+        console.log(vendorEmployeeId);
+        console.log(vendorPhone);
+        // Axios.post("").then(res => {
+        // });
+        alert("new Vendor Added");
+    }
 
     render() {
         return (
@@ -70,6 +79,7 @@ class Admin extends React.Component {
                 <AdminListVendor
                     list={this.state.vendorList}
                     style={this.state.listStyle}
+                    myClickHandler={this.addVendor.bind(this)}
                 />
                 <AdminListOrders
                     list={this.state.ordersList}
