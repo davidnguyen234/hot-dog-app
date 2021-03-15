@@ -5,7 +5,6 @@ import Nav from './components/Nav';
 import './css/App.css';
 import './css/Map.css';
 import './css/Header.css';
-import './css/Order.css';
 ReactDOM.render(
   <React.StrictMode>
       <Header></Header>

@@ -1,29 +1,33 @@
 import React from 'react';
-import '../../../css/Order.css';
 
 class OrderListItem extends React.Component {
 
     render() {
         const style = {
-            // border: '1px #ffc72c solid',
-            color: '#554'
+            width: '340px',
+            height: '40px',
+            border: '1px #AAA solid',
+            backgroundColor: '#FFFFFF', // RED
+            display: 'flex',
+            textAlign: 'center',
+            alignItems: 'center',
+            justifyContent: 'center'
         }
-        if (this.props.activeOrderId && this.props.activeOrderId === this.props.order.order_id) {
-            style.color = '#da291c ';
+        if (this.props.activeOrderId && this.props.activeOrderId === this.props.order.orders_id) {
+            style.backgroundColor = '#808080';
         }
-        return (<div className='data' style={style} onClick={(e) =>
-            this.props.myClickHandler(e, this.props.order.order_id)} >
-            <ul id="ords">
-                <li>Order # :  {this.props.order.order_id}
-                    <button
-                        onClick={(e) => this.props.deleteHandler(e, this.props.order.order_id)}
-                        style={{ backgroundColor: '#da291c' }}
-                        className='btn'>Complete
-                        </button>
-                </li>
-                <p>-----------------------------------------------------------------------------------------------------</p>
-            </ul>
-        </div>
+        return (
+            <div style={{display:'flex'}}>
+                <div className='order' style={style} onClick={(e) => this.props.myClickHandler(e, this.props.order.orders_id)} >
+                    Order # : {this.props.order.orders_id}
+                </div>
+                <button
+                    className='btn'
+                    onClick={(e) => this.props.deleteHandler(e, this.props.order.orders_id)}
+                >
+                    Complete
+             </button>
+            </div>
         );
     }
 }
