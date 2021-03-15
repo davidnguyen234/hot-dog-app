@@ -1,15 +1,85 @@
 import React from 'react';
-import '../../../css/Order.css';
+import Orders from './OrderHeader';
+import OrdersList from './OrdersList';
+import OrderDetails from './OrderDetails';
 
-const Header = ({ title }) => {
-  return (
-    <header className='header'>
-      <h1> {title}</h1>
-    </header>
-  )
-}
+class OrderMain extends React.Component {
 
-Header.defaultProps = {
-  title: 'Order List:'
+  constructor(props) {
+    super(props);
+    this.state = {
+      orders: [],
+      areOrdersFetched: false
+    }
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:9000/order")
+      .then((results) => {
+        return results.json();
+      }).then((orders) => {
+        this.setState({
+          ordersli: [...orders],
+          areOrdersFetched: true
+        });
+      })
+  }
+
+  deleteHandler(e, activeOrderId) {
+    e.preventDefault();
+    const newOrderList = this.state.ordersli.filter((order) => {
+      return order.orders_id !== activeOrderId;
+    });
+    this.setState({
+      ordersli: newOrderList
+    });
+    fetch(`http://localhost:9000/order/${activeOrderId}`, {
+      method: 'POST'
+    }).then((res) => {
+      console.log(`Successfully marked order with orderId ${activeOrderId} as complete.`);
+    }).catch((err) => {
+      console.error(`Error while marking order with orderId: ${activeOrderId} as complete in DB.`);
+    })
+  }
+
+  selectActiveOrder(e, activeOrderId) {
+    e.preventDefault();
+    console.log(activeOrderId);
+    let activeOrder = this.state.ordersli.find((o) => o.orders_id === activeOrderId);
+    this.setState({
+      activeOrderId,
+      activeOrder
+    });
+  }
+
+  render() {
+
+    let myOrderList = this.state.areOrdersFetched
+      ? <OrdersList
+        listOfOrders={this.state.ordersli}
+        activeOrderId={this.state.activeOrderId}
+        myClickHandler={this.selectActiveOrder.bind(this)}
+        deleteHandler={this.deleteHandler.bind(this)}
+      />
+      : <h2>Orders are loading!</h2>;
+
+    let myOrderDetails = this.state.activeOrderId
+      ? <OrderDetails
+        price={this.state.activeOrder.orders_price}
+        date={this.state.activeOrder.orders_date_time}
+      />
+      : <h2>Select an Order to see the details if there is any Order</h2>
+
+
+    return (
+      <div className='App'>
+        <header className="App-header">
+          <Orders />
+          {myOrderList}
+          {myOrderDetails}
+        </header>
+      </div>
+    );
+  }
 }
-export default Header;
+export default OrderMain;
