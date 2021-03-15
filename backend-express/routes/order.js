@@ -3,9 +3,22 @@ var router = express.Router();
 var db = require('../db');
 
 
-///Returns all the data in this route//
+// Returns the orders the are NOT complete (status == 0)
 router.get('/', (req, res, next) => {
    let mySQLQuery = 'SELECT * FROM `Orders` WHERE orders_status = 0';
+      db.query(mySQLQuery, (error, results) => {
+         if (error) {
+            console.log(mySQLQuery, error);
+            res.sendStatus(500);
+         } else {
+            res.send(results);
+         }
+      })
+});
+
+// Returns all the orders from the given vendor_id (NOT complete)
+router.get('/vendor/:vendorId', (req, res, next) => {
+   let mySQLQuery = `SELECT * FROM orders WHERE vendor_id = ${req.params.vendorId} AND orders_status = 0`;
    setTimeout(() => {
       db.query(mySQLQuery, (error, results) => {
          if (error) {
@@ -18,7 +31,7 @@ router.get('/', (req, res, next) => {
    }, 3000);
 });
 
-// Returns /value"
+// Returns an order by the orders_id
 router.get('/:id', (req, res, next) => {
    let mySQLQuery = 'SELECT * FROM `orders` WHERE orders_id =' + req.params.id;
    db.query(mySQLQuery, (error, results) => {
@@ -30,8 +43,7 @@ router.get('/:id', (req, res, next) => {
    })
 });
 
-
-//update order status
+// Update order status to complete (status == 1)
 router.post('/:id', (req, res, next) => {
    let mySQLQuery = `UPDATE \`orders\` SET  orders_status = 1 WHERE orders_id = ${req.params.id}`;
    db.query(mySQLQuery, (error, results) => {

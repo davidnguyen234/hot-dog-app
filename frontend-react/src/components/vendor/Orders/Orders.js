@@ -1,5 +1,5 @@
 import React from 'react';
-import Orders from './OrderHeader';
+import Header from './OrderHeader';
 import OrdersList from './OrdersList';
 import OrderDetails from './OrderDetails';
 
@@ -9,12 +9,13 @@ class OrderMain extends React.Component {
     super(props);
     this.state = {
       orders: [],
-      areOrdersFetched: false
+      areOrdersFetched: false,
+      vendorId: props.vendorid,
     }
   }
 
   componentDidMount() {
-    fetch("http://localhost:9000/order")
+    fetch("http://localhost:9000/order/vendor/" + this.state.vendorId)
       .then((results) => {
         return results.json();
       }).then((orders) => {
@@ -74,7 +75,7 @@ class OrderMain extends React.Component {
     return (
       <div className='App'>
         <header className="App-header">
-          <Orders />
+          <Header />
           {myOrderList}
           {myOrderDetails}
         </header>

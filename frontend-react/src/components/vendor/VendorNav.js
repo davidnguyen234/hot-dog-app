@@ -11,8 +11,10 @@ import {
     Link,
 } from 'react-router-dom';
 
-let itemId = 1; // ID for the item
-let addressId = 1; // ID for the address component
+// IDs used to re-mount the components when a new vendor is selected
+let itemId = 1; 
+let addressId = 1; 
+let orderId = 1;
 
 class VendorNav extends React.Component {
     constructor(props) {
@@ -43,6 +45,7 @@ class VendorNav extends React.Component {
         });
         itemId = Math.random(); //Changing the ID of the component forces the it to be remounted (if the url is correct)
         addressId = Math.random(); 
+        orderId = Math.random();
     }
 
     render() {
@@ -71,7 +74,11 @@ class VendorNav extends React.Component {
                     </ul>
                 </div>
                 <Switch>
-                    <Route path="/orders" component={Orders} exact />
+                    <Route
+                        path={"/orders"}
+                        render={(props) => <Orders {...props} key={orderId} vendorid={this.state.vendorid} />}
+                        exact
+                    />
                     <Route
                         path={"/items"}
                         render={(props) => <Items {...props} key={itemId} vendorid={this.state.vendorid} />}
