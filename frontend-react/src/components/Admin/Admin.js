@@ -59,13 +59,13 @@ class Admin extends React.Component {
 
     // PUT CALLS //
     // adds a new vendor to the database with the given employee_id and vendor_phone
-    addVendor(e, vendorPhone, vendorEmployeeId){
+    addVendor(e, vendorPhone, vendorEmployeeId) {
         e.preventDefault();
         console.log(vendorEmployeeId);
         console.log(vendorPhone);
-        // Axios.post("").then(res => {
-        // });
-        alert("new Vendor Added");
+        Axios.post("http://localhost:9000/admin/vendor/" + vendorPhone + "/" + vendorEmployeeId + "/").then(res => {
+            alert("New Vendor Added");
+        });
     }
 
     render() {

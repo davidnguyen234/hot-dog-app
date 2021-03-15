@@ -39,7 +39,7 @@ CREATE TABLE `Address` (
 -- Table Vendor
 -- -----------------------------------------------------
 CREATE TABLE `Vendor` (
-  vendor_id INT NOT NULL,
+  vendor_id INT NOT NULL AUTO_INCREMENT,
   vendor_phone VARCHAR(45) NOT NULL,
   vendor_hours VARCHAR(45) NOT NULL,
   employee_id INT NOT NULL,
@@ -54,6 +54,8 @@ CREATE TABLE `Vendor` (
   CONSTRAINT fk_Vendor_Address FOREIGN KEY (address_id) REFERENCES Address (address_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+    
+ALTER TABLE `Vendor` AUTO_INCREMENT = 101;
 
 -- -----------------------------------------------------
 -- Table Payment
@@ -64,10 +66,10 @@ CREATE TABLE `Payment` (
   payment_price INT NOT NULL,
   payment_date_time DATETIME NOT NULL,
   PRIMARY KEY (payment_id),
-    INDEX fk_Payment_Vendor_idx (vendor_id ASC) VISIBLE,
-  CONSTRAINT fk_Payment_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    INDEX fk_Payment_Vendor_idx (vendor_id ASC) VISIBLE);
+--   CONSTRAINT fk_Payment_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION);
 
 -- -----------------------------------------------------
 -- Table Admin
@@ -101,10 +103,11 @@ CREATE TABLE `Orders` (
   orders_date_time DATETIME NOT NULL,
   orders_status TINYINT NOT NULL,
   PRIMARY KEY (orders_id),
-	INDEX fk_Orders_Vendor_idx (vendor_id ASC) VISIBLE,
-  CONSTRAINT fk_Orders_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  
+INDEX fk_Orders_Vendor_idx (vendor_id ASC) VISIBLE);
+--   CONSTRAINT fk_Orders_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION);
 
 -- -----------------------------------------------------
 -- Table Vendor_has_Inventory
@@ -116,9 +119,9 @@ CREATE TABLE `Vendor_has_Inventory` (
   PRIMARY KEY (vendor_id, inventory_id),
 	INDEX fk_Vendor_has_Inventory_Inventory_idx (inventory_id ASC) VISIBLE,
 	INDEX fk_Vendor_has_Inventory_Vendor_idx (vendor_id ASC) VISIBLE,
-  CONSTRAINT fk_Vendor_has_Inventory_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+ --  CONSTRAINT fk_Vendor_has_Inventory_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
   CONSTRAINT fk_Vendor_has_Inventory_Inventory FOREIGN KEY (inventory_id) REFERENCES Inventory (inventory_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
@@ -154,10 +157,10 @@ INSERT INTO `Admin`
 
 INSERT INTO `Vendor`
   VALUES
-  (101, '(206) 485 - 1575', '12:00 PM - 8:00 PM', 1, 2, 1), ## Caprice Gregoratti at address #2
-  (102, '(206) 428 - 5727', '12:00 PM - 8:00 PM', 3, 1, 0), 
-  (103, '(206) 548 - 7586', '12:00 PM - 8:00 PM', 2, 6, 1), ## 0 == (vendor is closed) 1 == (true vendor is open)
-  (104, '(206) 358 - 4581', '12:00 PM - 8:00 PM', 4, 5, 1);
+  (DEFAULT,'(206) 485 - 1575', '12:00 PM - 8:00 PM', 1, 2, 1), ## Caprice Gregoratti at address #2
+  (DEFAULT, '(206) 428 - 5727', '12:00 PM - 8:00 PM', 3, 1, 0), 
+  (DEFAULT,'(206) 548 - 7586', '12:00 PM - 8:00 PM', 2, 6, 1), ## 0 == (vendor is closed) 1 == (true vendor is open)
+  (DEFAULT,'(206) 358 - 4581', '12:00 PM - 8:00 PM', 4, 5, 1);
 
 INSERT INTO `Orders`
   VALUES
