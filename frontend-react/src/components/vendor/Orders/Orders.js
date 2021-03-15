@@ -62,7 +62,7 @@ class OrderMain extends React.Component {
         myClickHandler={this.selectActiveOrder.bind(this)}
         deleteHandler={this.deleteHandler.bind(this)}
       />
-      : <h2>Orders are loading!</h2>;
+      : <h2>Loading...</h2>;
 
     let myOrderDetails = this.state.activeOrderId
       ? <OrderDetails
@@ -73,7 +73,7 @@ class OrderMain extends React.Component {
 
 
     return (
-      <div className='App'>
+      <div className='page'>
         <header className="App-header">
           <Header />
           {myOrderList}
