@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './OrderHeader';
 import OrdersList from './OrdersList';
 import OrderDetails from './OrderDetails';
 
@@ -71,14 +70,13 @@ class OrderMain extends React.Component {
       />
       : <h2>Select an Order to see the details if there is any Order</h2>
 
-
     return (
       <div className='page'>
-        <header className="App-header">
-          <Header />
+        <div id='inner'>
+          <h2> Order list for: {this.state.vendorId}</h2>
           {myOrderList}
           {myOrderDetails}
-        </header>
+        </div>
       </div>
     );
   }
