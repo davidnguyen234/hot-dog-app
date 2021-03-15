@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import MenuItem from './MenuItem';
 import Axios from "axios";
 import './menu.css';
 class Menu extends React.Component {
@@ -54,22 +55,8 @@ class Menu extends React.Component {
                 <ul className="list-group">
                     {this.state.menuItems.map(menuItem => (
                         <>
-                            <div className="quantity-buttons">
-                                <button className="increment">+</button>
-                                <h1>{this.state.quantity}</h1>
-                                <button className="decrement">-</button>
-                            </div>
-                            <li key={this.state.vendorid} className="menu-item" onClick={this.handleClick}>
-                                {/* <input
-                                type="checkbox"
-                                defaultChecked={this.state.checked}
-                                onClick={console.log("clicked check")}
-                            ></input> */}
-
-                                {menuItem.inventory_type + " $" + menuItem.inventory_price}
-                                {/* {this.state.menuItem.inventory_id} */}
-
-                            </li>
+                            {/* <QuantitySelector /> */}
+                            <MenuItem name={menuItem.inventory_type} price={menuItem.inventory_price} />
                         </>
                     ))}
 

@@ -32,6 +32,14 @@
   color: var(--mcRed);
 }
 
-.quantity-buttons {
-  align-self: flex-start;
+.list-group {
+  background-color: blue;
+  width: fit-content;
+}
+
+.quantitybtns {
+  display:inline-flex;
+  flex-direction: column;
+  background-color: blueviolet;
+  
 }
