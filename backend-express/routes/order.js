@@ -28,7 +28,7 @@ router.get('/vendor/:vendorId', (req, res, next) => {
             res.send(results);
          }
       })
-   }, 3000);
+   }, 1000);
 });
 
 // Returns an order by the orders_id
