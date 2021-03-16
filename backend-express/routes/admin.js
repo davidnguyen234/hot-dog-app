@@ -30,4 +30,17 @@ router.post('/vendor/:venPhone/:empId', function (req, res, next) {
         }
     );
 });
+
+router.post('/item/:itemName/:itemPrice/:itemCost', function (req, res, next) {
+    db.query(
+        `insert into inventory values  (5, '${req.params.itemName}', ${req.params.itemPrice}, ${req.params.itemCost})`,
+        function (err, results) {
+            if (!err) {
+                res.send(results);
+            } else {
+                console.log(err);
+            }
+        }
+    );
+});
 module.exports = router;

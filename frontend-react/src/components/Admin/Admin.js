@@ -61,13 +61,18 @@ class Admin extends React.Component {
     // adds a new vendor to the database with the given employee_id and vendor_phone
     addVendor(e, vendorPhone, vendorEmployeeId) {
         e.preventDefault();
-        console.log(vendorEmployeeId);
-        console.log(vendorPhone);
         Axios.post("http://localhost:9000/admin/vendor/" + vendorPhone + "/" + vendorEmployeeId + "/").then(res => {
             alert("New Vendor Added");
         });
     }
 
+    // (New item) adding itemName itemPrice and itemCost into the database
+    addItem(e, itemName, itemPrice, itemCost) {
+        e.preventDefault();
+        Axios.post("http://localhost:9000/admin/item/" + itemName + "/" + itemPrice   + "/" + itemCost + "/").then(res => {
+         alert("New Item Added");
+         });
+    }
     render() {
         return (
             <div className="adminPage" style={this.state.pageStyle}>
@@ -75,6 +80,7 @@ class Admin extends React.Component {
                 <AdminListItem
                     list={this.state.itemList}
                     style={this.state.listStyle}
+                    myClickHandler={this.addItem.bind(this)}
                 />
                 <AdminListVendor
                     list={this.state.vendorList}
