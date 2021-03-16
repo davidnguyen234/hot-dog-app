@@ -36,7 +36,7 @@ router.get('/', function (req, res, next) {
 router.get('/:id', function (req, res, next) {
     // Return Item by id
     db.query(
-        'SELECT vendor_id, inventory_id, inventory_type, inventory_avail FROM `vendor_has_inventory` JOIN `inventory` USING(inventory_id) WHERE vendor_id = ' + req.params.id,
+        'SELECT vendor_id, inventory_id, inventory_type, inventory_avail FROM `vendor_has_inventory` JOIN `inventory` USING(inventory_id)GROUP BY `inventory_type` WHERE vendor_id = ' + req.params.id,
         function (err, results) {
             if (!err) {
                 res.send(results);

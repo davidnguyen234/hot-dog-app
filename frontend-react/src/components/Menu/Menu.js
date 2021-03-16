@@ -3,6 +3,7 @@ import Button from './Button';
 import MenuItem from './MenuItem';
 import Axios from "axios";
 import './menu.css';
+// import QuantityButtons from './QuantityButtons';
 class Menu extends React.Component {
 
     constructor(props) {
@@ -52,15 +53,12 @@ class Menu extends React.Component {
         return (
 
             <div className="menu">
-                <ul className="list-group">
-                    {this.state.menuItems.map(menuItem => (
-                        <>
-                            {/* <QuantitySelector /> */}
-                            <MenuItem name={menuItem.inventory_type} price={menuItem.inventory_price} />
-                        </>
-                    ))}
+                {this.state.menuItems.map(menuItem => (<>
 
-                </ul>
+                    <MenuItem name={menuItem.inventory_type} price={menuItem.inventory_price} />
+                </>
+                ))}
+
                 <h1 className="Total">Total: {this.state.total} </h1>
 
                 <Button />

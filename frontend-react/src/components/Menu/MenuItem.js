@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { FaArrowAltCircleUp, FaArrowAltCircleDown } from 'react-icons/fa';
 import './menuItem.css';
 
 
+import { FaArrowAltCircleUp, FaArrowAltCircleDown } from 'react-icons/fa';
 
 function MenuItem(props) {
 
@@ -16,8 +16,13 @@ function MenuItem(props) {
                 <button onClick={increment}><FaArrowAltCircleUp /></button>
                 <p>{count}</p>
                 <button onClick={decrement}><FaArrowAltCircleDown /></button>
+
+                <div className="items">
+                    <h3 className='item_name'>{props.name + " " + props.price}</h3>
+                </div>
             </div>
-            <h3 className='item_name'>{props.name + " " + props.price}</h3>
+
+
         </>
     )
 }

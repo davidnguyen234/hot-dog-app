@@ -97,7 +97,6 @@ CREATE TABLE `Order` (
   CONSTRAINT fk_Order_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
 -- -----------------------------------------------------
 -- Table Vendor_has_Inventory
 -- -----------------------------------------------------

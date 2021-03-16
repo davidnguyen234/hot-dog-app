@@ -6,8 +6,8 @@ import './css/App.css';
 
 ReactDOM.render(
   <React.StrictMode>
-      <Header></Header>
-        <Nav></Nav>
+    <Header></Header>
+    <Nav></Nav>
   </React.StrictMode>,
   document.getElementById('root')
 );
