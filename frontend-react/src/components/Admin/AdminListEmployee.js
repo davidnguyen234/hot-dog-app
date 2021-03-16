@@ -9,7 +9,7 @@ class AdminListEmployee extends React.Component {
                 Employee:
                 {this.props.list.map(emp => (
                     <Popup
-                        key={emp.orders_id}
+                        key={emp.employee_id}
                         trigger={
                             <div id="Employee" style={this.props.style}>
                                 Id: {emp.employee_id}

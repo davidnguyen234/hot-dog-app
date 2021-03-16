@@ -13,7 +13,7 @@ class AdminListItem extends React.Component {
     handleChangeItemName(e) {
         this.setState({
             itemName: e.target.value
-        });   
+        });
     }
     handleChangeItemPrice(e) {
         this.setState({
@@ -21,9 +21,9 @@ class AdminListItem extends React.Component {
         });
     }
     handleChangeItemCost(e) {
-         this.setState({
-             itemCost: e.target.value
-         });
+        this.setState({
+            itemCost: e.target.value
+        });
     }
 
     render() {
@@ -46,7 +46,7 @@ class AdminListItem extends React.Component {
                                 <input
                                     type="text"
                                     value={this.state.itemName}
-                                     onChange={this.handleChangeItemName.bind(this)}
+                                    onChange={this.handleChangeItemName.bind(this)}
                                 />
                             </label>
                             <label>
@@ -54,7 +54,7 @@ class AdminListItem extends React.Component {
                                 <input
                                     type="text"
                                     value={this.state.itemPrice}
-                                     onChange={this.handleChangeItemPrice.bind(this)}
+                                    onChange={this.handleChangeItemPrice.bind(this)}
                                 />
                             </label>
                             <label>
@@ -62,7 +62,7 @@ class AdminListItem extends React.Component {
                                 <input
                                     type="text"
                                     value={this.state.itemCost}
-                                     onChange={this.handleChangeItemCost.bind(this)}
+                                    onChange={this.handleChangeItemCost.bind(this)}
                                 />
                             </label>
                             <input
@@ -73,28 +73,28 @@ class AdminListItem extends React.Component {
                         </form>
                     </div>
                 </Popup>
-                    {this.props.list.map(item => (
-                        <Popup
-                            key={item.inventory_id}
-                            trigger={
-                                <div id="InventoryItem" style={this.props.style}>
-                                    Name: {item.inventory_type} 
-                                    <br/>
+                {this.props.list.map(item => (
+                    <Popup
+                        key={item.inventory_id}
+                        trigger={
+                            <div id="InventoryItem" style={this.props.style}>
+                                Name: {item.inventory_type}
+                                <br />
                                     Price: {item.inventory_price}
-                                    <br/>
+                                <br />
                                     Cost: {item.inventory_cost}
-                                </div>}
-                            position="right top"
-                            on="hover"
-                            mouseLeaveDelay={300}
-                            mouseEnterDelay={300}
-                        >
-                            <div id="inventoryOptions" style={this.props.style}>
-                                <button>Edit</button>
-                                <button>Delete</button>
-                            </div>
-                        </Popup>
-                    ))}
+                            </div>}
+                        position="right top"
+                        on="hover"
+                        mouseLeaveDelay={300}
+                        mouseEnterDelay={300}
+                    >
+                        <div id="inventoryOptions" style={this.props.style}>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </div>
+                    </Popup>
+                ))}
             </div>
         );
     }
