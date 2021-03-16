@@ -59,7 +59,7 @@ class Menu extends React.Component {
                 </>
                 ))}
 
-                <h1 className="Total">Total: {this.state.total} </h1>
+                <h1 className="Total">Order Total: ${this.state.total} </h1>
 
                 <CheckoutButton />
 

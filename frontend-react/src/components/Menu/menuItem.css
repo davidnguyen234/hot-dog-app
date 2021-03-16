@@ -14,12 +14,14 @@
 .item_name:hover {
     color: var(--mcRed);
 }
+p {
+    padding: 8px;
+}
 
 .quantity {
     float: left;
     display:flex;
     height: fit-content;
-
     width: fit-content;
 }
 
