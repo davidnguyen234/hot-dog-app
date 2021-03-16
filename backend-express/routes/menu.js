@@ -20,7 +20,7 @@ var db = require('../db');
 router.get('/', function (req, res, next) {
     // Return vendor 101 items
     db.query(
-        'SELECT * FROM `vendor_has_inventory` JOIN `inventory` USING(inventory_id) WHERE vendor_id = 101;',
+        'SELECT * FROM `vendor_has_inventory` JOIN `inventory` USING(inventory_id) WHERE vendor_id = 101 && inventory_avail > 0;',
         function (err, results) {
             if (!err) {
 

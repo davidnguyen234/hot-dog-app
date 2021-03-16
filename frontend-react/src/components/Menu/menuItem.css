@@ -1,9 +1,11 @@
 
 .item_name {
-   
     background: var(--mcYellow);
-   width:fit-content;
+    width:fit-content;
+    justify-content:center;
     margin: 4px;
+    padding: 8px;
+    border-radius: 8px;
     border: 2px solid black;
     color: white;
     margin: 4px;
