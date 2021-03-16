@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import CheckoutButton from './CheckoutButton';
 import MenuItem from './MenuItem';
 import Axios from "axios";
 import './menu.css';
@@ -37,7 +37,7 @@ class Menu extends React.Component {
 
     //CLICK HANDLER
     handleClick() {
-
+        // this.preventDefault();
         // this.setState(state => ({
 
         // }));
@@ -61,7 +61,7 @@ class Menu extends React.Component {
 
                 <h1 className="Total">Total: {this.state.total} </h1>
 
-                <Button />
+                <CheckoutButton />
 
 
             </div >

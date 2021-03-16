@@ -1,8 +1,8 @@
 import React from 'react'
-import './button.css'
+import './checkoutbutton.css'
 // import { state } from 'react';
 
-function Button() {
+function CheckoutButton() {
 
     function handleClick(e) {
         e.preventDefault();
@@ -16,4 +16,4 @@ function Button() {
     )
 }
 
-export default Button
+export default CheckoutButton
