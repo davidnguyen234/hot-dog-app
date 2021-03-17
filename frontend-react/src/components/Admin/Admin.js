@@ -60,7 +60,6 @@ class Admin extends React.Component {
     // PUT CALLS //
     // adds a new vendor to the database with the given employee_id and vendor_phone
     addVendor(e, vendorPhone, vendorEmployeeId) {
-        e.preventDefault();
         Axios.post("http://localhost:9000/admin/vendor/" + vendorPhone + "/" + vendorEmployeeId + "/").then(res => {
             alert("New Vendor Added");
         });
@@ -68,7 +67,6 @@ class Admin extends React.Component {
 
     // (New item) adding itemName itemPrice and itemCost into the database
     addItem(e, itemName, itemPrice, itemCost) {
-        e.preventDefault();
         Axios.post("http://localhost:9000/admin/item/" + itemName + "/" + itemPrice   + "/" + itemCost + "/").then(res => {
          alert("New Item Added");
          });
