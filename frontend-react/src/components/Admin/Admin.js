@@ -78,25 +78,38 @@ class Admin extends React.Component {
             alert("New Employee Added!");
         });
     }
+
+    // DELETE CALLS//
+    // Deletes the a row in the given table and row
+    deleteElement(e, table, row) {
+        // e.preventDefault();
+        Axios.delete("http://localhost:9000/admin/" + table + "/" + row + "/").then(res => {
+            alert("Deleted the item!");
+        });
+        window.location.reload(false);
+    }
+
     render() {
         return (
             <div className="adminPage" style={this.state.pageStyle}>
-
                 <AdminListItem
                     list={this.state.itemList}
                     style={this.state.listStyle}
                     myClickHandler={this.addItem.bind(this)}
+                    myDeleteHandler={this.deleteElement.bind(this)}
                 />
                 <AdminListVendor
                     list={this.state.vendorList}
                     listEmp={this.state.employeeList}
                     style={this.state.listStyle}
                     myClickHandler={this.addVendor.bind(this)}
+                    myDeleteHandler={this.deleteElement.bind(this)}
                 />
                 <AdminListEmployee
                     list={this.state.employeeList}
                     style={this.state.listStyle}
                     myClickHandler={this.addEmployee.bind(this)}
+                    myDeleteHandler={this.deleteElement.bind(this)}
                 />
                 <AdminListOrders
                     list={this.state.ordersList}
