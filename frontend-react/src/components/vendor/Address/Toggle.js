@@ -14,10 +14,10 @@ class Toggle extends React.Component {
 
         if (this.props.vendorAvail === 1) {
             buttonText = "Open for Business"
-            style.backgroundColor = '#AAABB8';
+            style.backgroundColor = 'Green'; 
         } else if (this.props.vendorAvail === 0) {
             buttonText = "Closed for Business"
-            style.backgroundColor = '#FF0000'; // GREEN
+            style.backgroundColor = '#AAABB8'; // grey
         }
         return (
             <button style={style} onClick={(e) => this.props.myClickHandler(e)}>
