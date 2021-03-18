@@ -116,5 +116,47 @@ router.delete('/inventory/:row', function (req, res, next) {
         });
 });
 
+// Removes a row from the employee table
+router.delete('/employee/:row', function (req, res, next) {
+    var delete1 = 'DELETE FROM employee WHERE employee_id = ' + req.params.row;
+    db.query(
+        delete1,
+        function (err, results) {
+            if (!err) {
+                res.send(results);
+            } else {
+                console.log(err);
+            }
+        }
+    );
+});
+
+// Removes a row from the vendor and the vendor_has_inventory tables
+router.delete('/vendor/:row', function (req, res, next) {
+    var delete1 = 'DELETE FROM vendor WHERE vendor_id = ' + req.params.row;
+    var delete2 = 'DELETE FROM Vendor_has_Inventory WHERE vendor_id = ' + req.params.row;
+    async.parallel([
+        function (parallel_done) {
+            db.query(delete1, {}, function (err, results) {
+                if (err) return parallel_done(err);
+                parallel_done();
+            });
+        },
+        function (parallel_done) {
+            db.query(delete2, {}, function (err, results) {
+                if (err) return parallel_done(err);
+                parallel_done();
+            });
+        }
+    ],
+        function (err, results) {
+            if (!err) {
+                res.send(results);
+            } else {
+                console.log(err);
+            }
+        });
+});
+
 
 module.exports = router;

@@ -84,7 +84,7 @@ class Admin extends React.Component {
     deleteElement(e, table, row) {
         // e.preventDefault();
         Axios.delete("http://localhost:9000/admin/" + table + "/" + row + "/").then(res => {
-            alert("Deleted the item!");
+            // alert("Deleted!");
         });
         window.location.reload(false);
     }
