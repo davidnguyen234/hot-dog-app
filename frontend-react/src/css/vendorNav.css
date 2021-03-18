@@ -1,16 +1,52 @@
-.vendor-nav {
+.vendor-nav2 {
   display: flex;
   justify-content: space-around;
-  align-items: center;
   min-height: 10vh;
-  background: rgb(245, 210, 12);
-  color: rgb(241, 3, 3);
+  min-height: 10vh;
+  margin-top: 100px;
+
+
 }
 
-.nav-links {
+.vendor-nav2 li {
+  color: #464866;
+  margin-top:-10px
+
+}
+
+
+.nav-links2 {
   width: 25%;
+
+  list-style: none;
+  color: #464866;
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: space-around;
-  align-items: center;
   list-style: none;
+  
+}
+
+.nav-links2 a:link {
+  text-decoration: none;
+  
+}
+
+/* div.InventoryItem {
+  margin:40px 10px 10px 0;
+}
+
+div#orderItem {
+ margin:20px 10px 10px 0;
+} */
+
+div#Employee {
+  margin:5px 0px 5px 0;
+  background-color: #AAABB8;
+}
+
+div#AddButton{
+  background-color:#464866;
+  color:white;
+  margin-right: 400px;
 }

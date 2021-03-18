@@ -7,7 +7,6 @@ import './css/Map.css';
 import './css/Header.css';
 ReactDOM.render(
   <React.StrictMode>
-      <Header></Header>
         <Nav></Nav>
   </React.StrictMode>,
   document.getElementById('root')

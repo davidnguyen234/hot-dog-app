@@ -12,7 +12,7 @@ function Button() {
 
     return (
         <button className='checkoutbtn' onClick={handleClick} placeholder="Checkout" >
-            <h1>Checkout</h1>
+            <h3>Checkout</h3>
         </button>
     )
 }

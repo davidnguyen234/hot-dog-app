@@ -54,14 +54,14 @@ class VendorNav extends React.Component {
         };
         return (
             < Router >
-                <div className="vendor-nav">
-                    <h3> Vendor Page </h3>
+                <div className="vendor-nav2">
+                    
                     <VendorDropDown
                         listOfVendors={this.state.vendorlist}
                         vendorid={this.state.vendorid}
                         myClickHandler={this.selectActiveVendor.bind(this)}
                     />
-                    <ul className="nav-links">
+                    <ul className="nav-links2">
                         <Link style={nav_links_style} to="/orders">
                             <li>Orders</li>
                         </Link>

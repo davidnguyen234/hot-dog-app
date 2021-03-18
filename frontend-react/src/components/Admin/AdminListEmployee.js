@@ -86,7 +86,7 @@ class AdminListEmployee extends React.Component {
                                 <br />
                                 Phone: {emp.employee_phone}
                             </div>}
-                        position="right top"
+                        // position="right top"
                         on="hover"
                         mouseLeaveDelay={300}
                         mouseEnterDelay={300}

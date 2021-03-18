@@ -86,18 +86,19 @@ class Address extends React.Component {
     render() {
         return (
             <div className="page">
-                <div className="info">
+                <div id="address">
                     <h4>Hello Vendor: {this.state.vendorId}</h4>
                     <h3>Your current address is: {this.state.activeAddressId}</h3>
                 </div>
-                <AddressDropDown
+                <div id='address2'>
+                <AddressDropDown 
                     addressList={this.state.addressList}
                     myClickHandler={this.selectAddress.bind(this)}
-                />
-                <Toggle
+                /></div>
+                <div id='address3'><Toggle 
                     vendorAvail={this.state.vendorAvail}
                     myClickHandler={this.toggleAvil.bind(this)}
-                />
+                /></div>
             </div>
         );
     }
