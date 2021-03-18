@@ -18,7 +18,6 @@ class Menu extends React.Component {
 
     componentDidMount() {
         this.getItems();
-
     }
 
     getItems() {
@@ -27,24 +26,28 @@ class Menu extends React.Component {
         });
     }
 
-
-
     //CLICK HANDLERS
     handleClick(e, itemID, quantity, itemPrice) {
         let a = this.state.orderItemsQuantity.slice();
-        a[itemID - 1] = quantity; // clones the array and sets the new value in the given index
+        a[itemID] = quantity; // clones the array and sets the new value in the given index
         this.setState({
             orderItemsQuantity: a,// Sets the original array to the values of the clone
             orderPrice: this.state.orderPrice + itemPrice
         })
     }
 
-    checkout(){
-        Axios.post("http://localhost:9000/menu").then(res => {
-            alert("Order Sent!")
-        });
-    }
+    checkout() {
+        // update the "order" table
+        Axios.post(`http://localhost:9000/menu/orders/${this.state.orderPrice}`);
 
+        // update the "order_has_inventory" table
+        for (var i = 1; i < this.state.orderItemsQuantity.length; i++) {
+            if(this.state.orderItemsQuantity[i] !== undefined){
+                Axios.post("http://localhost:9000/menu/orderin/"+ i + "/" + this.state.orderItemsQuantity[i]);
+            }
+        }
+        alert("Order Placed");
+    }
 
     render() {
         return (
@@ -59,8 +62,8 @@ class Menu extends React.Component {
                 </>
                 ))}
                 <h1 className="Total">Order Total: ${this.state.orderPrice} </h1>
-                <button onClick={this.checkout} value="Checkout">
-                        Checkout
+                <button onClick={this.checkout.bind(this)} value="Checkout">
+                    Checkout
                 </button>
             </div >
         )

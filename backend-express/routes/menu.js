@@ -1,4 +1,5 @@
 var express = require('express');
+var async = require("async");
 var router = express.Router();
 var db = require('../db');
 
@@ -33,9 +34,9 @@ router.get('/:id', function (req, res, next) {
     );
 });
 
-router.post('/:itemId/:itemAmount/:orderPrice', function (req, res, next) {
-    let post1 = 'INSERT INTO order VALUES (DEFAULT, 101,' + req.params.orderPrice + ', 0)';
-    let post2 = 'INSERT INTO `Order_has_Inventory` (order_id, inventory_id, inventory_quantity ) SELECT `orderID`, i.inventory_id, ' + req.params.itemAmount + ' FROM (SELECT (order_id +1) as `orderID` FROM `Order` ORDER BY order_id DESC LIMIT 1) AS o CROSS JOIN (SELECT inventory_id FROM `Inventory` WHERE inventory_id = ' + req.params.itemId + ') AS i';
+// Add a row to the "Orders" table
+router.post('/orders/:orderPrice', function (req, res, next) {
+    let post1 = 'INSERT INTO `Order` VALUES (DEFAULT, 101,' + req.params.orderPrice + ', 0)';
     db.query(
         post1,
         function (err, results) {
@@ -48,7 +49,18 @@ router.post('/:itemId/:itemAmount/:orderPrice', function (req, res, next) {
     );
 });
 
-
-
-
+// Add a new row to the "Order_has_invnetory" table
+router.post('/orderin/:itemId/:itemQuantity/', function (req, res, next) {
+    let post2 = `INSERT INTO \`Order_has_Inventory\` (order_id, inventory_id, inventory_quantity ) SELECT \`orderID\`, i.inventory_id, ${req.params.itemQuantity} FROM (SELECT (order_id) as \`orderID\` FROM \`Order\` ORDER BY order_id DESC LIMIT 1) AS o CROSS JOIN (SELECT inventory_id FROM \`Inventory\` WHERE inventory_id = ${req.params.itemId}) AS i`;
+        db.query(
+            post2,
+            function (err, results) {
+                if (!err) {
+                    res.send(results);
+                } else {
+                    console.log(err);
+                }
+            }
+        );
+    });
 module.exports = router;

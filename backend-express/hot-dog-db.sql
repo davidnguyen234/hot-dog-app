@@ -39,13 +39,7 @@ CREATE TABLE `Vendor` (
   address_id INT NOT NULL,
   PRIMARY KEY (vendor_id),
   INDEX fk_Vendor_Employee_idx (employee_id ASC) VISIBLE,
-  INDEX fk_Vendor_Address_idx (address_id ASC) VISIBLE,
-  CONSTRAINT fk_Vendor_Employee FOREIGN KEY (employee_id) REFERENCES Employee (employee_id)
-    ON DELETE NO ACTION 
-    ON UPDATE NO ACTION,
-  CONSTRAINT fk_Vendor_Address FOREIGN KEY (address_id) REFERENCES Address (address_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  INDEX fk_Vendor_Address_idx (address_id ASC) VISIBLE);
 
 -- -----------------------------------------------------
 -- Table Payment
@@ -56,10 +50,7 @@ CREATE TABLE `Payment` (
   payment_price INT NOT NULL,
   payment_date_time DATETIME NOT NULL,
   PRIMARY KEY (payment_id),
-    INDEX fk_Payment_Vendor_idx (vendor_id ASC) VISIBLE,
-  CONSTRAINT fk_Payment_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    INDEX fk_Payment_Vendor_idx (vendor_id ASC) VISIBLE);
 
 -- -----------------------------------------------------
 -- Table Admin
@@ -68,10 +59,7 @@ CREATE TABLE `Admin` (
   admin_id INT NOT NULL,
   employee_id INT NOT NULL,
   PRIMARY KEY (admin_id),
-	INDEX fk_Admin_Employee_idx (employee_id ASC) VISIBLE,
-  CONSTRAINT fk_Admin_Employee FOREIGN KEY (employee_id) REFERENCES Employee (employee_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+	INDEX fk_Admin_Employee_idx (employee_id ASC) VISIBLE);
 
 -- -----------------------------------------------------
 -- Table Inventory
@@ -87,16 +75,12 @@ CREATE TABLE `Inventory` (
 -- Table Order
 -- -----------------------------------------------------
 CREATE TABLE `Order` (
-  order_id INT NOT NULL,
+  order_id INT NOT NULL AUTO_INCREMENT,
   vendor_id INT NOT NULL,
   order_price VARCHAR(45) NOT NULL,
-  order_date_time DATETIME NOT NULL,
   order_status TINYINT NOT NULL,
   PRIMARY KEY (order_id),
-	INDEX fk_Order_Vendor_idx (vendor_id ASC) VISIBLE,
-  CONSTRAINT fk_Order_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+	INDEX fk_Order_Vendor_idx (vendor_id ASC) VISIBLE);
 -- -----------------------------------------------------
 -- Table Vendor_has_Inventory
 -- -----------------------------------------------------
@@ -106,13 +90,12 @@ CREATE TABLE `Vendor_has_Inventory` (
   inventory_avail TINYINT NOT NULL,
   PRIMARY KEY (vendor_id, inventory_id),
 	INDEX fk_Vendor_has_Inventory_Inventory_idx (inventory_id ASC) VISIBLE,
-	INDEX fk_Vendor_has_Inventory_Vendor_idx (vendor_id ASC) VISIBLE,
-  CONSTRAINT fk_Vendor_has_Inventory_Vendor FOREIGN KEY (vendor_id) REFERENCES Vendor (vendor_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT fk_Vendor_has_Inventory_Inventory FOREIGN KEY (inventory_id) REFERENCES Inventory (inventory_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+	INDEX fk_Vendor_has_Inventory_Vendor_idx (vendor_id ASC) VISIBLE);
+
+CREATE TABLE `Order_has_Inventory`(
+	order_id INT NOT NULL,
+    inventory_id INT NOT NULL,
+    inventory_quantity INT NOT NULL);
     
 ##############################################################
 #▒█▀▀█ ▒█▀▀▀█ ▒█▀▀█ ▒█░▒█ ▒█░░░ ░█▀▀█ ▀▀█▀▀ ▀█▀ ▒█▄░▒█ ▒█▀▀█ #
@@ -152,12 +135,9 @@ INSERT INTO `Vendor`
 
 INSERT INTO `Order`
   VALUES
-  (001, 101, 14.98, '2021-02-20 09:58:17', 0),
-  (002, 103, 7.99, '2021-02-20 10:26:09', 0),
-  (003, 103, 4.98, '2021-02-21 07:01:04', 0),
-  (004, 101, 14.97, '2021-02-21 01:50:38', 0),
-  (005, 102, 25.96, '2021-02-22 12:40:57', 0),
-  (006, 101, 3.97, '2021-02-24 13:34:31', 0);
+  (DEFAULT, 101, 10.98, 0),
+  (DEFAULT, 103, 3.00, 0),
+  (DEFAULT, 103, 13.89, 0);
 
 INSERT INTO `Payment`
   VALUES
@@ -193,6 +173,14 @@ INSERT INTO `Vendor_has_Inventory`
   (104, 2, 1),
   (104, 3, 1),
   (104, 4, 1);
+  
+INSERT INTO `Order_has_Inventory`
+	VALUES
+    (1,1,3),
+    (1,2,1),
+    (2,1,1),
+    (3,1,4),
+    (3,2,1);
     
 ###########################################
 # ▒█▀▀▀█ ░█▀▀█ ▒█▀▄▀█ ▒█▀▀█ ▒█░░░ ▒█▀▀▀   #
@@ -203,3 +191,6 @@ INSERT INTO `Vendor_has_Inventory`
 #▒█░▒█ ▒█░▒█ ▒█▀▀▀ ▒█▄▄▀ ▒█░ ▒█▀▀▀ ░▀▀▀▄▄ #
 #░▀▀█▄ ░▀▄▄▀ ▒█▄▄▄ ▒█░▒█ ▄█▄ ▒█▄▄▄ ▒█▄▄▄█ #
 ###########################################
+-- INSERT INTO order VALUES (DEFAULT, 101,6 , 0);
+-- select * from `Order`;
+-- select * from `Order_has_Inventory`;
