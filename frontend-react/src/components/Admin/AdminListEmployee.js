@@ -1,31 +1,36 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
 
-class AdminListVendor extends React.Component {
+class AdminListEmployee extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            empId: '',
-            venPhone: ''
+            empFName: '',
+            empLName: '',
+            empPhone: ''
         };
     }
 
     // Eventhandlers that update the value of the text boxes
-    handleChangeEmployee(e) {
+    handleChangeFirstName(e) {
         this.setState({
-            empId: e.target.value
+            empFName: e.target.value
         });
     }
-    handleChangeVendor(e) {
+    handleChangeLastName(e) {
         this.setState({
-            venPhone: e.target.value
+            empLName: e.target.value
         });
     }
-
+    handleChangePhone(e) {
+        this.setState({
+            empPhone: e.target.value
+        });
+    }
     render() {
         return (
-            <div id="vendorList">
-                Vendor:
+            <div id="EmployeeList">
+                Employee:
                 {/* Add button as Popup feature to allow adding new options to the database */}
                 <Popup
                     trigger={
@@ -38,40 +43,49 @@ class AdminListVendor extends React.Component {
                     <div id="AddButton" style={this.props.style}>
                         <form>
                             <label>
-                                Employee ID:
+                                First Name:
                                 <input
                                     type="text"
-                                    value={this.state.empId}
-                                    onChange={this.handleChangeEmployee.bind(this)}
+                                    value={this.state.empFName}
+                                    onChange={this.handleChangeFirstName.bind(this)}
                                 />
                             </label>
                             <label>
-                                Vendor Phone:
+                                Last Name:
                                 <input
                                     type="text"
-                                    value={this.state.venPhone}
-                                    onChange={this.handleChangeVendor.bind(this)}
+                                    value={this.state.empLName}
+                                    onChange={this.handleChangeLastName.bind(this)}
+                                />
+                            </label>
+                            <label>
+                                Phone Number:
+                                <input
+                                    type="text"
+                                    value={this.state.empPhone}
+                                    onChange={this.handleChangePhone.bind(this)}
                                 />
                             </label>
                             <input
                                 type="submit"
                                 value="Submit"
-                                onClick={(e) => this.props.myClickHandler(e, this.state.venPhone, this.state.empId)}
+                                onClick={(e) => this.props.myClickHandler(e, this.state.empFName, this.state.empLName, this.state.empPhone)}
                             />
                         </form>
                     </div>
                 </Popup>
                 {/* mapping each item in the table to the list. Diplaying each item with a Popup feature */}
-                {this.props.list.map(vendor => (
+                {this.props.list.map(emp => (
                     <Popup
-                        key={vendor.vendor_id}
+                        key={emp.employee_id}
                         trigger={
-                            <div id="InventoryItem" style={this.props.style}>
-                                Vendor Id: {vendor.vendor_id}
+                            <div id="Employee" style={this.props.style}>
+                                Id: {emp.employee_id}
                                 <br />
-                                Employee Id: {vendor.employee_id}
-                            </div>
-                        }
+                                Name: {emp.employee_first_name} {emp.employee_last_name}
+                                <br />
+                                Phone: {emp.employee_phone}
+                            </div>}
                         position="right top"
                         on="hover"
                         mouseLeaveDelay={300}
@@ -86,4 +100,4 @@ class AdminListVendor extends React.Component {
         );
     }
 }
-export default AdminListVendor;
+export default AdminListEmployee;
