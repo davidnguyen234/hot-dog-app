@@ -72,6 +72,21 @@ router.post('/item/:itemName/:itemPrice/:itemCost', function (req, res, next) {
         });
 });
 
+// Add a new employee to the employee table, then adds the new item to each vendor in the "vendor_has_inventory" table
+router.post('/employee/:empFName/:empLName/:empPhone', function (req, res, next) {
+    var insert1 = `insert into employee values (DEFAULT, '${req.params.empFName}', '${req.params.empLName}', '${req.params.empPhone}')`;
+    db.query(
+        insert1,
+        function (err, results) {
+            if (!err) {
+                res.send(results);
+            } else {
+                console.log(err);
+            }
+        }
+    );
+});
+
 
 
 module.exports = router;

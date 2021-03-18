@@ -61,25 +61,22 @@ class Admin extends React.Component {
     // adds a new vendor to the database with the given employee_id and vendor_phone
     addVendor(e, vendorPhone, vendorEmployeeId) {
         Axios.post("http://localhost:9000/admin/vendor/" + vendorPhone + "/" + vendorEmployeeId + "/").then(res => {
-            alert("New Vendor Added");
+            alert("New Vendor Added!");
         });
     }
 
     // (New item) adding itemName itemPrice and itemCost into the database
     addItem(e, itemName, itemPrice, itemCost) {
         Axios.post("http://localhost:9000/admin/item/" + itemName + "/" + itemPrice + "/" + itemCost + "/").then(res => {
-            alert("New Item Added");
+            alert("New Item Added!");
         });
     }
 
     // (New employee) adding first name, last name and phone number to the employee table
     addEmployee(e, empFName, empLName, empPhone) {
-        e.preventDefault();
-        // Axios.post("http://localhost:9000/admin/item/" + itemName + "/" + itemPrice + "/" + itemCost + "/").then(res => {
-        //     alert("New Item Added");
-        // });
-        console.log(empFName + " " + empLName + " " + empPhone);
-        
+        Axios.post("http://localhost:9000/admin/employee/" + empFName + "/" + empLName + "/" + empPhone + "/").then(res => {
+            alert("New Employee Added!");
+        });
     }
     render() {
         return (
