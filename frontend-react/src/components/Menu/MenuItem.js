@@ -1,30 +1,61 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './menuItem.css';
 
 
 import { FaArrowAltCircleUp, FaArrowAltCircleDown } from 'react-icons/fa';
 
-function MenuItem(props) {
+class MenuItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            itemCount: 0
+        }
+    }
 
-    const [count, setCount] = useState(0);
-    const increment = () => setCount(count + 1);
-    const decrement = () => { if (count > 0) { setCount(count - 1) } };
-    return (
 
-        <>
-            <div className='quantity'>
-                <button onClick={increment}><FaArrowAltCircleUp /></button>
-                <p>{count}</p>
-                <button onClick={decrement}><FaArrowAltCircleDown /></button>
+    increment() {
+        this.setState({
+            itemCount: this.state.itemCount + 1
+        });
+    }
 
-                <div className="items">
-                    <h3 className='item_name'>{props.name + " " + props.price}</h3>
+    decrement() {
+        this.setState({
+            itemCount: this.state.itemCount - 1
+        });
+
+    }
+
+    render() {
+        return (
+            <>
+                <div className='quantity'>
+                    <div className="items">
+                        <h3 className='item_name'>{this.props.name + "  -- " + this.props.price}</h3>
+                    </div>
+                    <button
+                        onClick={(e) => {
+                            this.increment();
+                            this.props.myClickHandler(e, this.props.itemId, this.state.itemCount + 1, this.props.price);
+                        }}
+                    >
+                        <FaArrowAltCircleUp />
+                    </button>
+                    <button
+                        onClick={(e) => {
+                            this.decrement();
+                            this.props.myClickHandler(e, this.props.itemId, this.state.itemCount - 1, (this.props.price * -1));
+                        }}
+                    >
+                        <FaArrowAltCircleDown />
+                    </button>
+                    <div className="itemAmount">
+                        {this.state.itemCount}
+                    </div>
                 </div>
-            </div>
-
-
-        </>
-    )
+            </>
+        )
+    }
 }
 
 export default MenuItem
