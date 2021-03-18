@@ -18,7 +18,9 @@ export default function Nav() {
     };
     return (
         <Router>
+            
             <div className="vendor-nav">
+            <div id='logo'><h3>Hot Dawgs | Gourmet Hot Dog Carts</h3></div>
                 <ul className="nav-links">
                     <Link style={nav_links_style} to="/map">
                         <li>Map</li>

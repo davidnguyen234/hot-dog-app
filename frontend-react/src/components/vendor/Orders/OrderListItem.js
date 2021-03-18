@@ -14,7 +14,9 @@ class OrderListItem extends React.Component {
             justifyContent: 'center'
         }
         if (this.props.activeOrderId && this.props.activeOrderId === this.props.order.orders_id) {
-            style.backgroundColor = '#808080';
+            {
+                style.backgroundColor = '#AAABB8'; 
+            }
         }
         return (
             <div style={{display:'flex'}}>

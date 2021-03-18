@@ -84,12 +84,13 @@ class AdminListItem extends React.Component {
                                 <br />
                                 Cost: {item.inventory_cost}
                             </div>}
-                        position="right top"
+                        // position="right top"
                         on="hover"
                         mouseLeaveDelay={300}
                         mouseEnterDelay={300}
                     >
-                        <div id="inventoryOptions">
+                        <div id="inventoryOptions" style=
+                        {this.props.style}>
                             <button onClick={(e) => this.props.myDeleteHandler(e, `inventory`, item.inventory_id)}>
                                 Delete
                             </button>

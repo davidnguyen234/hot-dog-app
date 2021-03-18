@@ -18,7 +18,6 @@ class Admin extends React.Component {
                 width: '160px',
                 border: '1px #AAA solid',
                 padding: '10px',
-                backgroundColor: '#FFFFFF' // WHITE
             },
             pageStyle: {
                 display: 'flex',

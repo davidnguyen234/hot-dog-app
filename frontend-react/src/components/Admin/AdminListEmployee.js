@@ -76,7 +76,7 @@ class AdminListEmployee extends React.Component {
                 </Popup>
                 {/* mapping each item in the table to the list. Diplaying each item with a Popup feature */}
                 {this.props.list.map(emp => (
-                    <Popup
+                    <Popup id="employee-popup"
                         key={emp.employee_id}
                         trigger={
                             <div id="Employee" style={this.props.style}>
@@ -86,12 +86,13 @@ class AdminListEmployee extends React.Component {
                                 <br />
                                 Phone: {emp.employee_phone}
                             </div>}
-                        position="right top"
+                        // position="right top"
+                        background-color="red"
                         on="hover"
                         mouseLeaveDelay={300}
                         mouseEnterDelay={300}
                     >
-                        <div id="inventoryOptions" style={this.props.style}>
+                        <div id="employeeOptions" style={this.props.style}>
                             <button onClick={(e) => this.props.myDeleteHandler(e, `employee`, emp.employee_id)}>
                                 Delete
                             </button>

@@ -72,12 +72,12 @@ class AdminListVendor extends React.Component {
                                 Employee Id: {vendor.employee_id}
                             </div>
                         }
-                        position="right top"
+                        // position="right top"
                         on="hover"
                         mouseLeaveDelay={300}
                         mouseEnterDelay={300}
                     >
-                        <div id="inventoryOptions" style={this.props.style}>
+                        <div id="vendorOptions" style={this.props.style}>
                             <button onClick={(e) => this.props.myDeleteHandler(e, `vendor`, vendor.vendor_id)}>
                                 Delete
                             </button>
