@@ -17,12 +17,12 @@ class AdminListOrders extends React.Component {
                                 Vendor Id: {order.vendor_id}
 
                             </div>}
-                        position="right top"
+                        // position="right top"
                         on="hover"
                         mouseLeaveDelay={300}
                         mouseEnterDelay={300}
                     >
-                        <div id="inventoryOptions" style={this.props.style}>
+                        <div id="orderOptions" style={this.props.style}>
                             <button>Delete</button>
                         </div>
                     </Popup>
