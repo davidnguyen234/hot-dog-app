@@ -67,9 +67,19 @@ class Admin extends React.Component {
 
     // (New item) adding itemName itemPrice and itemCost into the database
     addItem(e, itemName, itemPrice, itemCost) {
-        Axios.post("http://localhost:9000/admin/item/" + itemName + "/" + itemPrice   + "/" + itemCost + "/").then(res => {
-         alert("New Item Added");
-         });
+        Axios.post("http://localhost:9000/admin/item/" + itemName + "/" + itemPrice + "/" + itemCost + "/").then(res => {
+            alert("New Item Added");
+        });
+    }
+
+    // (New employee) adding first name, last name and phone number to the employee table
+    addEmployee(e, empFName, empLName, empPhone) {
+        e.preventDefault();
+        // Axios.post("http://localhost:9000/admin/item/" + itemName + "/" + itemPrice + "/" + itemCost + "/").then(res => {
+        //     alert("New Item Added");
+        // });
+        console.log(empFName + " " + empLName + " " + empPhone);
+        
     }
     render() {
         return (
@@ -86,12 +96,13 @@ class Admin extends React.Component {
                     style={this.state.listStyle}
                     myClickHandler={this.addVendor.bind(this)}
                 />
-                <AdminListOrders
-                    list={this.state.ordersList}
-                    style={this.state.listStyle}
-                />
                 <AdminListEmployee
                     list={this.state.employeeList}
+                    style={this.state.listStyle}
+                    myClickHandler={this.addEmployee.bind(this)}
+                />
+                <AdminListOrders
+                    list={this.state.ordersList}
                     style={this.state.listStyle}
                 />
             </div>

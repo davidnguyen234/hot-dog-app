@@ -90,7 +90,6 @@ class AdminListItem extends React.Component {
                         mouseEnterDelay={300}
                     >
                         <div id="inventoryOptions" style={this.props.style}>
-                            <button>Edit</button>
                             <button>Delete</button>
                         </div>
                     </Popup>
