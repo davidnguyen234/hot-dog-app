@@ -78,7 +78,9 @@ class AdminListVendor extends React.Component {
                         mouseEnterDelay={300}
                     >
                         <div id="inventoryOptions" style={this.props.style}>
-                            <button>Delete</button>
+                            <button onClick={(e) => this.props.myDeleteHandler(e, `vendor`, vendor.vendor_id)}>
+                                Delete
+                            </button>
                         </div>
                     </Popup>
                 ))}

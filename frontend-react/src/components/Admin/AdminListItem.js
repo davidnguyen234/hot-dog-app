@@ -80,17 +80,19 @@ class AdminListItem extends React.Component {
                             <div id="InventoryItem" style={this.props.style}>
                                 Name: {item.inventory_type}
                                 <br />
-                                    Price: {item.inventory_price}
+                                Price: {item.inventory_price}
                                 <br />
-                                    Cost: {item.inventory_cost}
+                                Cost: {item.inventory_cost}
                             </div>}
                         position="right top"
                         on="hover"
                         mouseLeaveDelay={300}
                         mouseEnterDelay={300}
                     >
-                        <div id="inventoryOptions" style={this.props.style}>
-                            <button>Delete</button>
+                        <div id="inventoryOptions">
+                            <button onClick={(e) => this.props.myDeleteHandler(e, `inventory`, item.inventory_id)}>
+                                Delete
+                            </button>
                         </div>
                     </Popup>
                 ))}
