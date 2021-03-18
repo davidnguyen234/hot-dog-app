@@ -8,7 +8,7 @@ function AddressDropDown(props) {
                 key={addressArray.address_id}
                 onClick={(e) => props.myClickHandler(e, addressArray.address_id)}
             >
-                {"Address: " + addressArray.address_id}
+                {addressArray.address_id + ': ' + addressArray.address_name}
                 <br></br>
             </Dropdown.Item>
         );
