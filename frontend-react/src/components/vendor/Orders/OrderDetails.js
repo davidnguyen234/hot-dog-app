@@ -6,7 +6,7 @@ function OrderDetails(props) {
     }
     return (
         <span style={style}>
-            <h2>Price: {props.price} | Date: {props.date}</h2>
+            <h2>Price: {props.price} </h2>
         </span>
     );
 }

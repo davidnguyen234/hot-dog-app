@@ -22,9 +22,9 @@ class AdminListOrders extends React.Component {
                         mouseLeaveDelay={300}
                         mouseEnterDelay={300}
                     >
-                        <div id="orderOptions" style={this.props.style}>
-                            <button>Delete</button>
-                        </div>
+                    {/* <div id="orderOptions" style={this.props.style}>
+                        <button>Delete</button>
+                    </div> */}
                     </Popup>
                 ))}
             </div>

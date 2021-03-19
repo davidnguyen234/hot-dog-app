@@ -93,10 +93,12 @@ ALTER TABLE `Orders` AUTO_INCREMENT = 1000;
 CREATE TABLE `Vendor_has_Inventory` (
   vendor_id INT NOT NULL,
   inventory_id INT NOT NULL,
-  inventory_avail TINYINT NOT NULL,
+  inventory_avail TINYINT DEFAULT 0,
   PRIMARY KEY (vendor_id, inventory_id),
 	INDEX fk_Vendor_has_Inventory_Inventory_idx (inventory_id ASC) VISIBLE,
 	INDEX fk_Vendor_has_Inventory_Vendor_idx (vendor_id ASC) VISIBLE);
+    
+
 
 CREATE TABLE `Order_has_Inventory`(
 	orders_id INT NOT NULL,
