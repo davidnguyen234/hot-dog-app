@@ -1,0 +1,36 @@
+
+.item_name {
+    background: var(--mcYellow);
+    width:fit-content;
+    justify-content:center;
+    margin: 4px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid black;
+    color: white;
+    margin: 4px;
+}
+
+.item_name:hover {
+    color: var(--mcRed);
+}
+p {
+    padding: 8px;
+}
+
+.quantity {
+    float: left;
+    display:flex;
+    height: fit-content;
+    width: fit-content;
+}
+
+.items {
+    float: right;
+    width: fit-content;
+}
+
+.item_name {
+    width: fit-content;
+}
+

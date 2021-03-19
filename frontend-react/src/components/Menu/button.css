@@ -1,9 +1,0 @@
-.checkoutbtn {
-  background: var(--mcYellow);
-  color: white;
-  margin: 4px;
-}
-
-.checkoutbtn:hover {
-  color: var(--mcRed);
-}
