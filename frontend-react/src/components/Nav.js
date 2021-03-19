@@ -1,7 +1,8 @@
 import React from 'react';
-import Map from './Map';
+import Map from './Maps';
 import Menu from './Menu/Menu';
 import Vendor from './vendor/VendorNav';
+import Admin from './Admin/Admin';
 import '../css/Nav.css';
 import {
     BrowserRouter as Router,
@@ -17,9 +18,11 @@ export default function Nav() {
     };
     return (
         <Router>
+            
             <div className="vendor-nav">
+            <div id='logo'><h3>Hot Dawgs | Gourmet Hot Dog Carts</h3></div>
                 <ul className="nav-links">
-                <Link style={nav_links_style} to="/map">
+                    <Link style={nav_links_style} to="/map">
                         <li>Map</li>
                     </Link>
                     <Link style={nav_links_style} to="/menu">
@@ -28,14 +31,16 @@ export default function Nav() {
                     <Link style={nav_links_style} to="/vendor">
                         <li>Vendor</li>
                     </Link>
-                    
-                   
+                    <Link style={nav_links_style} to="/admin">
+                        <li>Admin</li>
+                    </Link>
                 </ul>
             </div>
             <Switch>
                 <Route path="/map" component={Map} exact />
                 <Route path="/menu" component={Menu} exact />
                 <Route path="/vendor" component={Vendor} exact />
+                <Route path="/admin" component={Admin} exact />
             </Switch>
         </Router>
     );

@@ -1,83 +1,72 @@
 var express = require('express');
 var router = express.Router();
-const mysql = require('mysql2');
-let myCredentials = require('../../../dbCreds.json');
-const connection = mysql.createConnection(myCredentials);
+var db = require('../db');
 
 
-///Returns all the data in this route//
-router.get('/',(req, res, next) => {
-   let mySQLQuery=  'SELECT * FROM `Order`';
+// Returns the orders the are NOT complete (status == 0)
+router.get('/', (req, res, next) => {
+   let mySQLQuery = 'SELECT * FROM `Orders` WHERE orders_status = 0';
+      db.query(mySQLQuery, (error, results) => {
+         if (error) {
+            console.log(mySQLQuery, error);
+            res.sendStatus(500);
+         } else {
+            res.send(results);
+         }
+      })
+});
 
-  //connection.connect();
-  setTimeout(() => {
-   connection.query(mySQLQuery, (error, results) => {
-      if(error) {
-         console.log(mySQLQuery, error);
+// Returns all the orders from the given vendor_id (NOT complete)
+router.get('/vendor/:vendorId', (req, res, next) => {
+   let mySQLQuery = `SELECT * FROM orders WHERE vendor_id = ${req.params.vendorId} AND orders_status = 0`;
+   setTimeout(() => {
+      db.query(mySQLQuery, (error, results) => {
+         if (error) {
+            console.log(mySQLQuery, error);
+            res.sendStatus(500);
+         } else {
+            res.send(results);
+         }
+      })
+   }, 1000);
+});
+
+// Returns an order by the orders_id
+router.get('/:id', (req, res, next) => {
+   let mySQLQuery = 'SELECT * FROM `orders` WHERE orders_id =' + req.params.id;
+   db.query(mySQLQuery, (error, results) => {
+      if (error) {
          res.sendStatus(500);
-        }else {
-           res.send(results);
-        } 
-        })
-     //connection.end();
-  },3000);
-});
-
-// Returns /value"
-router.get('/:id',(req, res, next) => {
-   let mySQLQuery=  'SELECT * FROM `order` WHERE order_id ='+ req.params.id;
-
-  //connection.connect();
-  connection.query(mySQLQuery, (error, results) => {
-     if(error) {
-        res.sendStatus(500);
-     }else {
-        res.send(results);
-     }
-     })
-  //connection.end();
-});
-
-
-//update order status
-router.post('/:id', (req, res, next) => {
-   let mySQLQuery = `UPDATE \`order\` SET  order_status = 1 WHERE order_id = ${req.params.id}`;
-   connection.query(mySQLQuery, (error, results) => {
-      if(error) {
-         res.sendStatus(error);  
-      }else {
+      } else {
          res.send(results);
       }
-      });
+   })
+});
+
+// Update order status to complete (status == 1)
+router.post('/:id', (req, res, next) => {
+   let mySQLQuery = `UPDATE \`orders\` SET  orders_status = 1 WHERE orders_id = ${req.params.id}`;
+   db.query(mySQLQuery, (error, results) => {
+      if (error) {
+         res.sendStatus(error);
+      } else {
+         res.send(results);
+      }
+   });
 })
 
 
 //Create order
-router.post('/',(req, res, next) => {
-   let mySQLQuery=  `INSERT INTO \`order\` order_id, vendor_id ,
-                     order_price, order_date_time, order_status) VALUES
-               (${req.params.order_id},${req.params.vendor_id},
-               ${req.params.order_price},${req.params.order_date_time},${req.params.order_status}`;  
-  //connection.connect();
-  connection.query(mySQLQuery, (error, results) => {
-     if(error) {
-        res.sendStatus(500);
-     }
-        res.send(results);
-     })
-  //connection.end();
+router.post('/', (req, res, next) => {
+   let mySQLQuery = `INSERT INTO \`orders\` orders_id, vendor_id ,
+                     orders_price, orders_date_time, orders_status) VALUES
+               (${req.params.orders_id},${req.params.vendor_id},
+               ${req.params.orders_price},${req.params.orders_date_time},${req.params.orders_status}`;
+   db.query(mySQLQuery, (error, results) => {
+      if (error) {
+         res.sendStatus(500);
+      }
+      res.send(results);
+   })
 });
-
-
-// router.delete('/:id', (req,res) => {
-//    const { id } =req.params.is;
-//     let mySQLQuery=  `DELETE FROM \`order\` WHERE order_id = ${req.params.id}`;
-//    // mySQLQuery= mySQLQuery.filter((mySQLQuery) =>  order_id != req.params.id);
-//    connection.query(mySQLQuery, (error, results) => {
-//       if(error) {
-//          res.sendStatus(500);
-//       }
-//          res.send(results);
-//       })
-// })
-module.exports = router; 
+module.exports = router;

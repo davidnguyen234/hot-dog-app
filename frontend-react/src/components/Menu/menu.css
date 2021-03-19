@@ -1,6 +1,6 @@
 :root {
   --mcYellow: #ffc72c;
-  --mcRed: #da291c;
+  --mcRed: #29648A;
   --mcBlack: #27251f;
 }
 
@@ -11,8 +11,47 @@
   flex-direction: column;
   /* justify-content: flex-end; */
   padding: 40px;
-  background: var(--mcRed);
+  background: #29648A;
   border: solid 2px var(--mcBlack);
   border-radius: 20px;
+  color: black;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
+#popup-root {
+  position: absolute;
+  margin-top: -575px;
+  
+}
+
+#popup-root ul{
+  list-style-type: none;
+  margin-right:25px;
+
+}
+
+.checkoutbtn {
+  color: black;
+  background:rgb(114, 139, 155);
+  margin-top: 20px;
+}
+
+.checkoutbtn:hover {
+ color: white;
+}
+
+.menu-item {
+  text-align: center;
+  background: #AAABB8;
+  
+  margin: 3px;
+  cursor: pointer;
+  padding: 15px;
+  padding-top: 25px;
+  height: 28px;
+  border-bottom: 1px #29648A;
+}
+.menu-item:hover {
   color: white;
 }
