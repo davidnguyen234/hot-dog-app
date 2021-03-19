@@ -36,7 +36,7 @@ router.get('/:id', function (req, res, next) {
 
 // Add a row to the "Orders" table
 router.post('/orders/:orderPrice', function (req, res, next) {
-    let post1 = 'INSERT INTO `Order` VALUES (DEFAULT, 101,' + req.params.orderPrice + ', 0)';
+    let post1 = 'INSERT INTO `Orders` VALUES (DEFAULT, 101,' + req.params.orderPrice + ', 0)';
     db.query(
         post1,
         function (err, results) {
@@ -49,9 +49,9 @@ router.post('/orders/:orderPrice', function (req, res, next) {
     );
 });
 
-// Add a new row to the "Order_has_invnetory" table
+// Add a new row to the "orders_has_invnetory" table
 router.post('/orderin/:itemId/:itemQuantity/', function (req, res, next) {
-    let post2 = `INSERT INTO \`Order_has_Inventory\` (order_id, inventory_id, inventory_quantity ) SELECT \`orderID\`, i.inventory_id, ${req.params.itemQuantity} FROM (SELECT (order_id) as \`orderID\` FROM \`Order\` ORDER BY order_id DESC LIMIT 1) AS o CROSS JOIN (SELECT inventory_id FROM \`Inventory\` WHERE inventory_id = ${req.params.itemId}) AS i`;
+    let post2 = `INSERT INTO \`Order_has_Inventory\` (orders_id, inventory_id, inventory_quantity ) SELECT \`orderID\`, i.inventory_id, ${req.params.itemQuantity} FROM (SELECT (orders_id) as \`orderID\` FROM \`Orders\` ORDER BY orders_id DESC LIMIT 1) AS o CROSS JOIN (SELECT inventory_id FROM \`Inventory\` WHERE inventory_id = ${req.params.itemId}) AS i`;
         db.query(
             post2,
             function (err, results) {
